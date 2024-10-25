@@ -9,3 +9,4 @@ Currently, two official plugins are available:
 # amico-foundation
 # amico-foundation
 # amico-foundation
+# amico-foundation
