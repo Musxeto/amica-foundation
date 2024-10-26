@@ -24,7 +24,7 @@ const ProjectCarousel = ({ projects }) => {
   };
 
   return (
-    <div className="w-full h-auto mt-4 p-5 bg-raisin-black-2 shadow-light-red-500 shadow-lg rounded-lg hover:bg-raisin-black-2-200 transition-all transtions-2s">
+    <div className="w-full h-auto mt-4 p-5 bg-raisin-black-2 hover:shadow-light-red-500 hover:shadow-md rounded-lg transition-all transtions-4s">
       <Carousel 
         responsive={responsive} 
         infinite={true} 

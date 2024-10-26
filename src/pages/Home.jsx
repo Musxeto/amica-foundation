@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion"; // Import motion from framer-motion
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import logo from "/logo.png";
 import ProjectCarousel from "../components/home/ProjectCarousel";
 import InterviewCarousel from "../components/home/InterviewCarousel";
+import Footer from "../components/Footer";
 
 const proj = [
   {
@@ -95,12 +96,11 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Projects Section */}
       <motion.div
-        className="flex flex-col justify-centerpy-10"
-        initial={{ opacity: 0, y: 50 }} // Initial state for animation
-        animate={{ opacity: 1, y: 0 }} // Final state for animation
-        transition={{ duration: 0.5 }} // Animation duration
+        className="flex flex-col justify-center py-10 px-5"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <h2 className="text-2xl font-bold text-center mb-4">Featured Projects</h2>
         <p className="text-center mb-8">
@@ -117,12 +117,11 @@ const Home = () => {
         </div>
       </motion.div>
 
-      {/* Interviews Section */}
       <motion.div
-        className="flex flex-col justify-center py-10"
-        initial={{ opacity: 0, y: 50 }} // Initial state for animation
-        animate={{ opacity: 1, y: 0 }} // Final state for animation
-        transition={{ duration: 0.5 }} // Animation duration
+        className="flex flex-col justify-center py-10 px-5"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <h2 className="text-2xl font-bold text-center mt-8 mb-4">Interviews</h2>
         <p className="text-center mb-8">
@@ -138,6 +137,26 @@ const Home = () => {
           </a>
         </div>
       </motion.div>
+
+      <motion.div
+        className="flex flex-col p-5 items-center justify-center py-10"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-2xl font-bold text-center mb-4">Looking for GP Students?</h2>
+        <p className="text-center mb-6">
+          If you're interested in getting your project featured or collaborating with GP students, feel free to reach out to us!
+        </p>
+        <a
+          href="/contactus"
+          className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-400 transition duration-300"
+        >
+          Contact Us
+        </a>
+      </motion.div>
+
+      <Footer />
     </div>
   );
 };

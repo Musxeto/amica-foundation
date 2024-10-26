@@ -24,7 +24,7 @@ const InterviewCarousel = ({ interviews }) => {
   };
 
   return (
-    <div className="w-full h-auto p-5 mt-4 bg-raisin-black-2 shadow-lg shadow-light-red-500 rounded-lg hover:bg-raisin-black-2-200 transition-all transition-2s">
+    <div className="w-full h-auto p-5 mt-4 bg-raisin-black-2 rounded-lg hover:shadow-light-red-500 hover:shadow-lg transition-all transition-2s">
       <Carousel
         responsive={responsive}
         infinite={true}
