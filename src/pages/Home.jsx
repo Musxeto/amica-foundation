@@ -102,7 +102,9 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl font-bold text-center mb-4">Featured Projects</h2>
+        <h2 className="text-2xl font-bold text-center mb-4">
+          Featured Projects
+        </h2>
         <p className="text-center mb-8">
           Explore innovative projects hosted by GP students.
         </p>
@@ -125,7 +127,8 @@ const Home = () => {
       >
         <h2 className="text-2xl font-bold text-center mt-8 mb-4">Interviews</h2>
         <p className="text-center mb-8">
-          Gain insights from industry leaders, innovators, and bright GP Students.
+          Gain insights from industry leaders, innovators, and bright GP
+          Students.
         </p>
         <InterviewCarousel interviews={interviews} />
         <div className="text-center mt-4">
@@ -139,21 +142,26 @@ const Home = () => {
       </motion.div>
 
       <motion.div
-        className="flex flex-col p-5 items-center justify-center py-10"
+        className="flex flex-col p-5 items-center  justify-center py-10"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl font-bold text-center mb-4">Looking for GP Students?</h2>
-        <p className="text-center mb-6">
-          If you're interested in getting your project featured or collaborating with GP students, feel free to reach out to us!
-        </p>
-        <a
-          href="/contactus"
-          className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-400 transition duration-300"
-        >
-          Contact Us
-        </a>
+        <div className="min-h-screen justify-center flex flex-col items-center">
+          <h2 className="text-2xl font-bold text-center mb-4">
+            Looking for GP Students?
+          </h2>
+          <p className="text-center mb-6">
+            If you're interested in getting your project featured or
+            collaborating with GP students, feel free to reach out to us!
+          </p>
+          <a
+            href="/contactus"
+            className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-400 transition duration-300"
+          >
+            Contact Us
+          </a>
+        </div>
       </motion.div>
 
       <Footer />

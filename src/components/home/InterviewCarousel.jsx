@@ -36,7 +36,7 @@ const InterviewCarousel = ({ interviews }) => {
         {interviews.map((interview) => (
           <div
             key={interview.id}
-            className="flex flex-col md:flex-row items-center mb-3 px-4"
+            className="flex flex-col md:flex-row items-center mb-3 p-4"
           >
             {/* Details Column */}
             <div className="flex flex-col justify-center w-full md:w-1/2 pl-4 text-left">
