@@ -39,7 +39,7 @@ const inter = [
     title: "Interview with John Doe",
     description:
       "A discussion about tech innovations in the educational sector.",
-    image: "https://via.placeholder.com/400",
+    image: "/1619.png",
     link: "/interview-one",
   },
   {

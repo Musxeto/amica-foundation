@@ -36,7 +36,7 @@ const InterviewCarousel = ({ interviews }) => {
         {interviews.map((interview) => (
           <div
             key={interview.id}
-            className="flex flex-col md:flex-row items-center mb-3 p-4"
+            className="flex flex-col md:flex-row items-center mb-3 px-4"
           >
             {/* Details Column */}
             <div className="flex flex-col justify-center w-full md:w-1/2 pl-4 text-left">
@@ -57,7 +57,7 @@ const InterviewCarousel = ({ interviews }) => {
               <img
                 src={interview.image}
                 alt={interview.title}
-                className="w-full h-96 object-cover rounded-lg"
+                className="w-full h-auto sm:max-h-60 md:max-h-72 lg:mac-h-96 object-cover rounded-lg"
               />
             </div>
           </div>
