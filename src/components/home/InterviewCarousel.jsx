@@ -57,7 +57,7 @@ const InterviewCarousel = ({ interviews }) => {
               <img
                 src={interview.image}
                 alt={interview.title}
-                className="w-full h-auto sm:max-h-60 md:max-h-72 py-4 lg:mac-h-96 object-cover rounded-lg"
+               className="w-full h-48 md:h-72 object-cover rounded-lg"
               />
             </div>
           </div>

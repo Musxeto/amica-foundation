@@ -39,7 +39,7 @@ const ProjectCarousel = ({ projects }) => {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full py-4 h-auto sm:max-h-60 md:max-h-72 lg:mac-h-96 object-cover rounded-lg"
+                className="w-full h-48 md:h-72 object-cover rounded-lg"
               />
             </div>
             {/* Details Column */}

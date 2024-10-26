@@ -14,5 +14,5 @@ body {
 }
 
 .flicker-shadow {
-  animation: flicker 1.5s infinite; /* Adjust the duration as needed */
+  animation: flicker 1.5s infinite; 
 }
