@@ -24,7 +24,7 @@ const InterviewCarousel = ({ interviews }) => {
   };
 
   return (
-    <div className="w-full h-auto p-5 mt-4 bg-raisin-black shadow-lg rounded-lg hover:bg-raisin-black-2-200 transition-all transition-2s">
+    <div className="w-full h-auto p-5 mt-4 bg-raisin-black-2 shadow-lg shadow-light-red-500 rounded-lg hover:bg-raisin-black-2-200 transition-all transition-2s">
       <Carousel
         responsive={responsive}
         infinite={true}
@@ -36,7 +36,7 @@ const InterviewCarousel = ({ interviews }) => {
         {interviews.map((interview) => (
           <div
             key={interview.id}
-            className="flex flex-col md:flex-row items-center mb-3 p-4"
+            className="flex flex-col items-center mb-3 p-4"
           >
             {/* Details Column */}
             <div className="flex flex-col justify-center w-full md:w-1/2 pl-4 text-left">
