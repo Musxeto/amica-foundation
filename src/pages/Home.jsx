@@ -97,7 +97,7 @@ const Home = () => {
 
       {/* Projects Section */}
       <motion.div
-        className="flex flex-col p-5 items-center justify-centerpy-10"
+        className="flex flex-col justify-centerpy-10"
         initial={{ opacity: 0, y: 50 }} // Initial state for animation
         animate={{ opacity: 1, y: 0 }} // Final state for animation
         transition={{ duration: 0.5 }} // Animation duration
@@ -119,7 +119,7 @@ const Home = () => {
 
       {/* Interviews Section */}
       <motion.div
-        className="flex flex-col p-5 items-center justify-center py-10"
+        className="flex flex-col justify-center py-10"
         initial={{ opacity: 0, y: 50 }} // Initial state for animation
         animate={{ opacity: 1, y: 0 }} // Final state for animation
         transition={{ duration: 0.5 }} // Animation duration

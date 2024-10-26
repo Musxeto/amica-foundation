@@ -33,7 +33,7 @@ const ProjectCarousel = ({ projects }) => {
         keyBoardControl={true}
         showDots={true}>
         {projects.map((project) => (
-          <div key={project.id} className="flex flex-col items-center p-4 mb-5">
+          <div key={project.id} className="flex flex-col md:flex-row items-center p-4 mb-5">
             {/* Image Column */}
             <div className="flex-shrink-0 w-full md:w-1/2">
               <img
