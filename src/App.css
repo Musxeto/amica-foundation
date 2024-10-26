@@ -4,10 +4,15 @@ body {
   font-family: "Poppins", sans-serif;
   font-style: normal;
 }
-.slick-slide {
-  transition: transform 0.3s ease;
+@keyframes flicker {
+  0%, 20%, 100% {
+    box-shadow: 0 4px 15px #F87074; 
+  }
+  30% {
+    box-shadow: 0 4px 30px #F87154;
+  }
 }
 
-.slick-slide:hover {
-  transform: scale(1.05);
+.flicker-shadow {
+  animation: flicker 1.5s infinite; /* Adjust the duration as needed */
 }
