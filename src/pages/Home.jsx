@@ -34,7 +34,7 @@ const Home = () => {
       <div className="bg-raisin-black-2 text-white">
         <Navbar />
         <div className="flex flex-col p-5 items-center justify-center min-h-screen">
-          <img src={logo} alt="Logo" className="h-32 mb-4 sm:h-40 md:h-48" />
+          <img src={logo} alt="Logo" className="h-32 mb-4 sm:h-40 md:h-48 mt-20" />
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-center">Amico Foundation</h1>
           <p className="text-base sm:text-lg md:text-xl text-center max-w-md mb-6 px-4">
             We strive to make a difference in our community through various projects and initiatives.
@@ -42,19 +42,22 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
             <a
               href="/projects"
-              className="px-4 py-2 sm:px-6 sm:py-2 bg-buff text-white rounded hover:bg-yellow-green transition duration-300"
+              className="px-4 text-center py-2 sm:px-6 sm:py-2 bg-buff text-white rounded hover:bg-yellow-green transition duration-300"
             >
               Projects
             </a>
             <a
               href="/contactus"
-              className="px-4 py-2 sm:px-6 sm:py-2 bg-light-red text-white rounded hover:bg-yellow-green transition duration-300"
+              className="px-4 py-2 sm:px-6 sm:py-2 text-center bg-light-red text-white rounded hover:bg-yellow-green transition duration-300"
             >
               Contact Us
             </a>
           </div>
         </div>
-        <ProjectCarousel projects={projects} />
+        <div className="p-5">
+           <ProjectCarousel projects={projects} />
+        </div>
+       
       </div>
     );
 };

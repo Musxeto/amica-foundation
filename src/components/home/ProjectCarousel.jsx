@@ -24,26 +24,27 @@ const ProjectCarousel = ({ projects }) => {
   };
 
   return (
-    <div className="w-full h-auto mt-4 bg-raisin-black-2 shadow-buff shadow-lg">
-      <Carousel responsive={responsive} 
-                infinite={true} 
-                autoPlay={true} 
-                autoPlaySpeed={3000}
-                keyBoardControl={true}
-                showDots={true}>
+    <div className="w-full h-auto mt-4 bg-raisin-black shadow-lg rounded-lg hover:bg-raisin-black-2-200 transition-all transtions-2s">
+      <Carousel 
+        responsive={responsive} 
+        infinite={true} 
+        autoPlay={true} 
+        autoPlaySpeed={3000}
+        keyBoardControl={true}
+        showDots={true}>
         {projects.map((project) => (
-          <div key={project.id} className="flex flex-row items-center p-4">
+          <div key={project.id} className="flex flex-col md:flex-row items-center p-4">
             {/* Image Column */}
-            <div className="flex-shrink-0 w-1/2">
+            <div className="flex-shrink-0 w-full md:w-1/2">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-32 object-cover rounded-lg" // Fixed height for images
+                className="w-full h-96 object-cover rounded-lg"
               />
             </div>
             {/* Details Column */}
-            <div className="flex flex-col justify-center w-1/2 pl-4 text-left">
-              <h2 className="text-xl font-bold text-white">{project.title}</h2>
+            <div className="flex flex-col justify-center w-full md:w-1/2 pl-4 text-left">
+              <h2 className="text-2xl font-bold text-white">{project.title}</h2>
               <p className="text-white mb-4">{project.description}</p>
               <a 
                 href={project.link} 
