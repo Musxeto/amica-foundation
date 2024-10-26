@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import Carousel from '../components/Carousel'
+
+import Navbar from '../components/Navbar'
+import CustomCarousel from '../components/Carousel'
 
 const imgs = [
-    "https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp",
-    "https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg"
+    "/placehol.png",
+    "https://cdn.wrestletalk.com/wp-content/uploads/2024/09/roman-reigns-september-14-a.jpg"
 ]
 
 const Home = () => {
@@ -11,7 +13,8 @@ const Home = () => {
   
     return (
     <div>
-     <Carousel images={imgs}/>
+        <Navbar />
+   <CustomCarousel images={images} />
     </div>
   )
 }

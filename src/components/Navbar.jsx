@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '/logo.png';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +48,7 @@ const Navbar = () => {
       {/* Sidebar Menu for Small Screens */}
       <div
         className={`fixed top-0 left-0 h-full w-2/3 max-w-xs bg-raisin-black-2 shadow-lg transform ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+          isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out z-50 md:hidden`}
       >
         <button
@@ -71,16 +71,39 @@ const Navbar = () => {
           </svg>
         </button>
         <div className="flex flex-col space-y-6 p-8 mt-10">
-          <Link to="/" onClick={toggleMenu} className="text-white hover:text-buff">
+          <Link
+            to="/"
+            onClick={toggleMenu}
+            className="text-white hover:text-buff"
+          >
             Home
           </Link>
-          <Link to="/projects" onClick={toggleMenu} className="text-white hover:text-buff">
+          <Link
+            to="/projects"
+            onClick={toggleMenu}
+            className="text-white hover:text-buff"
+          >
             Projects
           </Link>
-          <Link to="/interviews" onClick={toggleMenu} className="text-white hover:text-buff">
+          <Link
+            to="/interviews"
+            onClick={toggleMenu}
+            className="text-white hover:text-buff"
+          >
             Interviews
           </Link>
-          <Link to="/contactus" onClick={toggleMenu} className="text-white hover:text-buff">
+          <Link
+            to="/reports"
+            onClick={toggleMenu}
+            className="text-white hover:text-buff"
+          >
+            Reports
+          </Link>
+          <Link
+            to="/contactus"
+            onClick={toggleMenu}
+            className="text-white hover:text-buff"
+          >
             Contact Us
           </Link>
         </div>
@@ -96,6 +119,13 @@ const Navbar = () => {
         </Link>
         <Link to="/interviews" className="text-white hover:text-buff">
           Interviews
+        </Link>
+        <Link
+          to="/reports"
+          onClick={toggleMenu}
+          className="text-white hover:text-buff"
+        >
+          Reports
         </Link>
       </div>
 
