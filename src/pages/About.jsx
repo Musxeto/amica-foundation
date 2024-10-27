@@ -6,7 +6,7 @@ const About = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-raisin-black-2  min-h-screen mt-16 text-white py-10 px-4 md:px-20 lg:px-40">
+      <div className="bg-raisin-black-2 min-h-screen mt-16 text-white py-10 px-4 md:px-20 lg:px-40">
         <h2 className="text-3xl font-bold text-buff-500 text-center mb-6">
           About Us
         </h2>
@@ -31,10 +31,17 @@ const About = () => {
         </ul>
 
         <h3 className="text-2xl font-semibold text-buff-500 mb-4">
+          Contribute Your Work
+        </h3>
+        <p className="text-gray-300 mb-4">
+          If you want to publish research reports or feature your projects, we encourage you to reach out! Your contributions can help us shed light on important topics and inspire others.
+        </p>
+
+        <h3 className="text-2xl font-semibold text-buff-500 mb-4">
           Contact Us
         </h3>
         <p className="text-gray-300 mb-4">
-          We’d love to hear from you! If you have any questions, suggestions, or would like to collaborate, please reach out to us through our <a href="/contact" className="text-buff-500 underline">Contact Us</a> page.
+          We’d love to hear from you! If you have any questions, suggestions, or would like to collaborate, please contact us through our <a href="/contact" className="text-buff-500 underline">Contact Us</a> page.
         </p>
 
         <p className="text-center text-gray-300">
