@@ -74,7 +74,7 @@ const Home = () => {
           className="h-32 mb-4 sm:h-40 md:h-48 mt-20"
         />
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-center">
-          Amico Foundation
+          Amica Foundation
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-center max-w-md mb-6 px-4">
           A platform for GP students to showcase and host their projects,
