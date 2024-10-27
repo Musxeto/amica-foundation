@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const interviewsData = [
   {
@@ -8,7 +9,7 @@ const interviewsData = [
     interviewName: "Interview with Playboi Carti",
     interviewer: "John Doe",
     description: "A deep dive into the creative process of Playboi Carti.",
-    videoLink: "https://www.youtube.com/watch?v=example1",
+    videoLink: "https://youtu.be/oK-9Lqm-8-s?list=OLAK5uy_n5ZwE3MkjjrtedzA92tQcAS44EtzgwIqI", 
     image: "/placehol.png",
   },
   {
@@ -16,7 +17,7 @@ const interviewsData = [
     interviewName: "Taylor Swift: The Art of Songwriting",
     interviewer: "Jane Smith",
     description: "Taylor Swift shares her journey as a songwriter.",
-    videoLink: "https://www.youtube.com/watch?v=example2",
+    videoLink: "https://www.youtube.com/watch?v=FSzCnVBZQS0",
     image: "/placehol.png",
   },
   {
@@ -24,19 +25,19 @@ const interviewsData = [
     interviewName: "Behind the Scenes with Chris Evans",
     interviewer: "Alice Johnson",
     description: "Chris Evans discusses his experiences in Hollywood.",
-    videoLink: "https://www.youtube.com/watch?v=example3",
+    videoLink: "https://youtu.be/FlvQrMidE3w",
     image: "/placehol.png",
   },
   {
     id: 4,
     interviewName: "Emma Watson on Activism",
     interviewer: "Bob Brown",
-    description: "Emma Watson talks about her role in promoting gender equality.",
-    videoLink: "https://www.youtube.com/watch?v=example4",
+    description:
+      "Emma Watson talks about her role in promoting gender equality.",
+    videoLink: "https://www.youtube.com/watch?v=NEFEwfPcXRA",
     image: "/placehol.png",
   },
 ];
-
 const Interviews = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const filteredInterviews = interviewsData.filter(
@@ -82,14 +83,12 @@ const Interviews = () => {
                   Interviewer: {interview.interviewer}
                 </h3>
                 <p className="text-md mb-2">{interview.description}</p>
-                <a
-                  href={interview.videoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/interview/${interview.id}`}
                   className="text-buff-500 inline-flex items-center mt-2 hover:text-buff-600 transition-all duration-200"
                 >
-                  Watch Video <FaArrowRight className="ml-1" />
-                </a>
+                  Watch Interview <FaArrowRight className="ml-1" />
+                </Link>
               </div>
               <div className="md:w-1/2">
                 <img

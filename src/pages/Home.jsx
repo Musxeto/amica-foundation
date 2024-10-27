@@ -39,7 +39,7 @@ const inter = [
     interviewName: "Interview with Playboi Carti",
     interviewer: "John Doe",
     description: "A deep dive into the creative process of Playboi Carti.",
-    videoLink: "https://www.youtube.com/watch?v=example1",
+    videoLink: "https://youtu.be/oK-9Lqm-8-s?list=OLAK5uy_n5ZwE3MkjjrtedzA92tQcAS44EtzgwIqI", 
     image: "/placehol.png",
   },
   {
@@ -47,7 +47,7 @@ const inter = [
     interviewName: "Taylor Swift: The Art of Songwriting",
     interviewer: "Jane Smith",
     description: "Taylor Swift shares her journey as a songwriter.",
-    videoLink: "https://www.youtube.com/watch?v=example2",
+    videoLink: "https://www.youtube.com/watch?v=FSzCnVBZQS0",
     image: "/placehol.png",
   },
   {
@@ -55,15 +55,16 @@ const inter = [
     interviewName: "Behind the Scenes with Chris Evans",
     interviewer: "Alice Johnson",
     description: "Chris Evans discusses his experiences in Hollywood.",
-    videoLink: "https://www.youtube.com/watch?v=example3",
+    videoLink: "https://youtu.be/FlvQrMidE3w",
     image: "/placehol.png",
   },
   {
     id: 4,
     interviewName: "Emma Watson on Activism",
     interviewer: "Bob Brown",
-    description: "Emma Watson talks about her role in promoting gender equality.",
-    videoLink: "https://www.youtube.com/watch?v=example4",
+    description:
+      "Emma Watson talks about her role in promoting gender equality.",
+    videoLink: "https://www.youtube.com/watch?v=NEFEwfPcXRA",
     image: "/placehol.png",
   },
 ];
