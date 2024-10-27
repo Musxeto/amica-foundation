@@ -9,7 +9,7 @@ const projectsData = [
     shortDescription: "A facial recognition attendance system to streamline school attendance...",
     longDescription: "This project involves using machine learning models for accurate attendance...",
     images: ["1619.png", "placehol.png"],
-    students: ["Playboi CArti", "Taylor Swift"],
+    students: ["Playboi Carti", "Taylor Swift"],
     school: "Green Valley High School"
   },
   {
@@ -21,17 +21,45 @@ const projectsData = [
     students: ["Lil Uzi Vert", "Kanye South"],
     school: "Izne ka School"
   },
+  {
+    id: 3,
+    name: "Eco-Friendly Waste Management",
+    shortDescription: "A project aimed at optimizing waste collection processes...",
+    longDescription: "Utilizes machine learning to predict waste generation patterns...",
+    images: ["waste_management1.png", "waste_management2.png"],
+    students: ["John Doe"],
+    school: "City High School"
+  },
+  {
+    id: 4,
+    name: "Remote Health Monitoring",
+    shortDescription: "An IoT project for monitoring patients remotely...",
+    longDescription: "The system collects health data and sends alerts to doctors...",
+    images: ["health_monitoring1.png", "health_monitoring2.png"],
+    // Missing students field for demonstration
+    school: "Healthcare University"
+  },
+  {
+    id: 5,
+    name: "Virtual Reality Learning Environment",
+    shortDescription: "A VR project that enhances student learning experiences...",
+    longDescription: "Integrates VR technology to create immersive learning modules...",
+    images: ["vr_learning1.png", "vr_learning2.png"],
+    students: ["Alice Johnson", "Bob Brown"],
+    school: "Tech Academy"
+  },
 ];
 
 const Projects = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('');
+  const [projects, setProjects] = useState(projectsData);
 
   // Filter projects based on search query
-  const filteredProjects = projectsData.filter(project =>
+  const filteredProjects = projects.filter(project =>
     project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     project.school.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    project.students.some(student => student.toLowerCase().includes(searchQuery.toLowerCase()))
+    (project.students && project.students.some(student => student.toLowerCase().includes(searchQuery.toLowerCase())))
   );
 
   // Sort projects based on selected option
