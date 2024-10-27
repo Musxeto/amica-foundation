@@ -5,7 +5,7 @@ import logo from "/logo.png";
 import ProjectCarousel from "../components/home/ProjectCarousel";
 import InterviewCarousel from "../components/home/InterviewCarousel";
 import Footer from "../components/Footer";
-
+import { useNavigate } from "react-router-dom";
 const proj = [
   {
     id: 1,
@@ -63,7 +63,7 @@ const inter = [
 const Home = () => {
   const [projects, setProjects] = useState(proj);
   const [interviews, setInterviews] = useState(inter);
-
+  const navigate = useNavigate()
   return (
     <div className="bg-raisin-black-2 text-white">
       <Navbar />
@@ -81,18 +81,22 @@ const Home = () => {
           fostering collaboration and innovation.
         </p>
         <div className="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
-          <a
-            href="/projects"
+          <button
+            onClick={()=>{
+              navigate("/projects")
+            }}
             className="px-4 text-center py-2 sm:px-6 sm:py-2 bg-buff text-white rounded hover:bg-yellow-green transition duration-300"
           >
             Projects
-          </a>
-          <a
-            href="/contactus"
+          </button>
+          <button
+           onClick={()=>{
+            navigate("/contactus")
+          }}
             className="px-4 py-2 sm:px-6 sm:py-2 text-center bg-light-red text-white rounded hover:bg-yellow-green transition duration-300"
           >
             Contact Us
-          </a>
+          </button>
         </div>
       </div>
 
