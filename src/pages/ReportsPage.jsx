@@ -1,40 +1,38 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Document, Page } from "react-pdf";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import { Viewer, Worker } from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
 
 const reportsData = [
   {
     id: 1,
     title: "AI in Healthcare",
-    description:
-      "Exploring the applications of AI in modern healthcare systems.",
+    description: "Exploring the applications of AI in modern healthcare systems.",
     uploadedBy: "Alice Johnson",
-    pdf: "/ds.pdf", // Ensure this file exists
+    pdf: "/ds.pdf",
   },
   {
     id: 2,
     title: "Blockchain Basics",
-    description:
-      "An introduction to the fundamentals of blockchain technology.",
+    description: "An introduction to the fundamentals of blockchain technology.",
     uploadedBy: "Bob Brown",
-    pdf: "/react.pdf", // Ensure this file exists
+    pdf: "/react.pdf",
   },
   {
     id: 3,
     title: "React Performance Optimization",
     description: "Tips and tricks to make React apps run faster.",
     uploadedBy: "Carol White",
-    pdf: "/science.pdf", // Ensure this file exists
+    pdf: "/science.pdf",
   },
   {
     id: 4,
     title: "Machine Learning Algorithms",
     description: "A comprehensive guide to popular ML algorithms.",
     uploadedBy: "Dave Smith",
-    pdf: "/react.pdf", // Ensure this file exists
+    pdf: "/react.pdf",
   },
 ];
 
@@ -58,18 +56,19 @@ const ReportsPage = () => {
           Uploaded by: {report.uploadedBy}
         </p>
 
-        <div className="mt-8">
-          <object
-            data={report.pdf}
-            type="application/pdf"
-            width="100%"
-            height="800px"
+        <div className="mt-8 flex justify-center">
+          <div
+            className="pdf-viewer-container w-full max-w-4xl mx-auto"
+            style={{
+              border: "1px solid rgba(0, 0, 0, 0.3)",
+              padding: "10px",
+              backgroundColor: "#f8f9fa",
+              borderRadius: "8px",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
+            }}
           >
-            <p>
-              Your browser does not support PDFs.{" "}
-              <a href={report.pdf}>Download the PDF</a>.
-            </p>
-          </object>
+              <Viewer fileUrl={report.pdf} />
+          </div>
         </div>
       </div>
       <Footer />
