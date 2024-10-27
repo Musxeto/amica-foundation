@@ -1,12 +1,110 @@
-import React from 'react';
+import React, { useState } from "react";
+import Navbar from "../components/Navbar";
+import { FaArrowRight } from "react-icons/fa";
+
+const interviewsData = [
+  {
+    id: 1,
+    interviewName: "Interview with Playboi Carti",
+    interviewer: "John Doe",
+    description: "A deep dive into the creative process of Playboi Carti.",
+    videoLink: "https://www.youtube.com/watch?v=example1",
+    image: "/placehol.png",
+  },
+  {
+    id: 2,
+    interviewName: "Taylor Swift: The Art of Songwriting",
+    interviewer: "Jane Smith",
+    description: "Taylor Swift shares her journey as a songwriter.",
+    videoLink: "https://www.youtube.com/watch?v=example2",
+    image: "/placehol.png",
+  },
+  {
+    id: 3,
+    interviewName: "Behind the Scenes with Chris Evans",
+    interviewer: "Alice Johnson",
+    description: "Chris Evans discusses his experiences in Hollywood.",
+    videoLink: "https://www.youtube.com/watch?v=example3",
+    image: "/placehol.png",
+  },
+  {
+    id: 4,
+    interviewName: "Emma Watson on Activism",
+    interviewer: "Bob Brown",
+    description:
+      "Emma Watson talks about her role in promoting gender equality.",
+    videoLink: "https://www.youtube.com/watch?v=example4",
+    image: "/placehol.png",
+  },
+];
 
 const Interviews = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const filteredInterviews = interviewsData.filter(
+    (interview) =>
+      interview.interviewName
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
+      interview.interviewer.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div>
-      <h1>Interviews Page</h1>
-      <p>This page will contain information about interviews.</p>
+    <div className="bg-raisin-black-2 text-white">
+      <Navbar />
+      <div className="min-h-screen mt-16 p-8">
+        <h1 className="text-4xl text-buff-500 font-bold text-center mb-4">
+          Interviews
+        </h1>
+        <p className="text-raisin-black-800 text-xl text-center mb-6">
+          Insightful conversations with notable personalities.
+        </p>
+
+        {/* Search Control */}
+        <div className="mb-8">
+          <input
+            type="text"
+            placeholder="Search interviews..."
+            className="bg-raisin-black-400 p-2 rounded-md text-white w-full md:w-1/2 mx-auto"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+
+        {/* Interviews List */}
+        <div className="grid grid-cols-1 gap-6 ">
+          {filteredInterviews.map((interview) => (
+            <div
+              key={interview.id}
+              className="p-4 bg-raisin-black-500 rounded-lg flex flex-row"
+            >
+              <div className="md:w-1/2 mb-4 md:mb-0 md:pr-4">
+                <h2 className="text-2xl font-bold mb-2">{interview.interviewName}</h2>
+                <h3 className="text-xl font-semibold mb-2">
+                  Interviewer: {interview.interviewer}
+                </h3>
+                <p className="text-md mb-2">{interview.description}</p>
+                <a
+                  href={interview.videoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-buff-500 inline-flex items-center mt-2"
+                >
+                  Watch Video <FaArrowRight className="ml-1" />
+                </a>
+              </div>
+              <div className="md:w-1/2">
+                <img
+                  src={interview.image}
+                  alt={interview.interviewName}
+                  className="w-full h-72 rounded-md object-cover"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Interviews;

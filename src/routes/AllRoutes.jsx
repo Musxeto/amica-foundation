@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Interviews from "../pages/Interviews";
+import InterviewsPage from "../pages/InterviewsPage";
 import Projects from "../pages/Projects";
 import About from "../pages/About";
 import ContactUs from "../pages/ContactUs";
@@ -16,6 +17,7 @@ const AllRoutes = () => {
       <Route path="/interviews" element={<Interviews />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/projects/:id" element={<ProjectPage />} /> 
+      <Route path="/interviews/:id" element={<InterviewsPage />} /> 
       <Route path="/about" element={<About />} />
       <Route path="/contactus" element={<ContactUs />} />
       <Route path="/reports" element={<Reports />} />

@@ -122,6 +122,7 @@ const projectsData = [
     school: "Culinary School",
   },
 ];
+
 const ProjectPage = () => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
@@ -143,8 +144,8 @@ const ProjectPage = () => {
   return (
     <div className="bg-raisin-black-2 text-white">
       <Navbar />
-      <div className="min-h-screen mt-16 p-8">
-        <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="min-h-screen mt-16 p-4 md:p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <div>
             <h1 className="text-3xl text-buff-500 font-bold">{project.name}</h1>
             <p className="text-gray-400 mt-2">{project.shortDescription}</p>
@@ -163,10 +164,8 @@ const ProjectPage = () => {
               </div>
               <div>
                 <h2 className="text-xl py-3 font-semibold">
-                  School : {""}
-                  <span className="text-raisin-black-700">
-                    {project.school}
-                  </span>
+                  School :{" "}
+                  <span className="text-raisin-black-700">{project.school}</span>
                 </h2>
               </div>
             </div>
@@ -193,7 +192,7 @@ const ProjectPage = () => {
                   key={index}
                   src={image}
                   alt={project.name}
-                  className="w-full h-60 object-cover rounded-md"
+                   className="w-full h-72 object-cover rounded-md"
                 />
               ))}
             </Carousel>
@@ -201,7 +200,6 @@ const ProjectPage = () => {
         </div>
 
         <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-2">Content</h2>
           {Array.isArray(project.content) &&
             project.content.map((block, blockIndex) => {
               switch (block.type) {
@@ -229,7 +227,7 @@ const ProjectPage = () => {
                       key={blockIndex}
                       src={block.text}
                       alt={block.alt}
-                      className="my-2 w-full h-auto"
+                      className="h-36 w-auto object-cover my-8 rounded-md "
                     />
                   );
                 case "list":
