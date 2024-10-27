@@ -5,13 +5,14 @@ body {
   font-style: normal;
 }
 @keyframes flicker {
-  0%, 20%, 100% {
+  0% {
     box-shadow: 0 4px 15px #F87074; 
-    animation: ease-in;
   }
-  30%,50% {
-    box-shadow: 0 4px 30px #F87154;
-    animation: ease-out;
+  50% {
+    box-shadow: 0 4px 30px #F87154; 
+  }
+  100% {
+    box-shadow: 0 4px 15px #F87074; 
   }
 }
 
