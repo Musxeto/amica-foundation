@@ -26,7 +26,7 @@ const projectsData = [
     name: "Eco-Friendly Waste Management",
     shortDescription: "A project aimed at optimizing waste collection processes...",
     longDescription: "Utilizes machine learning to predict waste generation patterns...",
-    images: ["waste_management1.png", "waste_management2.png"],
+    images: ["placehol.png"],
     students: ["John Doe"],
     school: "City High School"
   },
@@ -35,7 +35,7 @@ const projectsData = [
     name: "Remote Health Monitoring",
     shortDescription: "An IoT project for monitoring patients remotely...",
     longDescription: "The system collects health data and sends alerts to doctors...",
-    images: ["health_monitoring1.png", "health_monitoring2.png"],
+    images: ["placehol.png"],
     // Missing students field for demonstration
     school: "Healthcare University"
   },
@@ -44,7 +44,7 @@ const projectsData = [
     name: "Virtual Reality Learning Environment",
     shortDescription: "A VR project that enhances student learning experiences...",
     longDescription: "Integrates VR technology to create immersive learning modules...",
-    images: ["vr_learning1.png", "vr_learning2.png"],
+    images: ["placehol.png"],
     students: ["Alice Johnson", "Bob Brown"],
     school: "Tech Academy"
   },
@@ -72,7 +72,7 @@ const Projects = () => {
   return (
     <div className="bg-raisin-black-2 text-white">
       <Navbar />
-      <div className="min-h-screen p-8">
+      <div className="min-h-screen mt-10 p-8">
         <h1 className="text-3xl text-buff-500 font-bold mb-4">Projects</h1>
         <p className="text-raisin-black-800 mb-6">Great projects by our amazing students and schools.</p>
         

@@ -5,7 +5,7 @@ const ProjectCard = ({ project }) => {
     text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
 
   return (
-    <div className="bg-raisin-black-400 rounded-lg shadow-md p-5 hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
+    <div className="bg-raisin-black-400 rounded-lg shadow-md p-5 hover:shadow-lg hover:scale-105 hover:shadow-light-red-500 transition-all duration-300 ease-in-out">
       {project.images[0] && (
         <img
           src={project.images[0]}
