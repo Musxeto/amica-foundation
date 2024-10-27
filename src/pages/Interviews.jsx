@@ -31,8 +31,7 @@ const interviewsData = [
     id: 4,
     interviewName: "Emma Watson on Activism",
     interviewer: "Bob Brown",
-    description:
-      "Emma Watson talks about her role in promoting gender equality.",
+    description: "Emma Watson talks about her role in promoting gender equality.",
     videoLink: "https://www.youtube.com/watch?v=example4",
     image: "/placehol.png",
   },
@@ -42,9 +41,7 @@ const Interviews = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const filteredInterviews = interviewsData.filter(
     (interview) =>
-      interview.interviewName
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase()) ||
+      interview.interviewName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       interview.interviewer.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -64,22 +61,24 @@ const Interviews = () => {
           <input
             type="text"
             placeholder="Search interviews..."
-            className="bg-raisin-black-400 p-2 rounded-md text-white w-full md:w-1/2 mx-auto"
+            className="bg-raisin-black-400 p-2 focus:border focus:border-light-red rounded-md text-white w-full md:w-1/2 mx-auto transition-transform duration-300 focus:scale-105 focus:outline-none"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
 
         {/* Interviews List */}
-        <div className="grid grid-cols-1 gap-6 ">
+        <div className="grid grid-cols-1 gap-6">
           {filteredInterviews.map((interview) => (
             <div
               key={interview.id}
-              className="p-4 bg-raisin-black-500 rounded-lg flex flex-row"
+              className="p-4 bg-raisin-black-500 rounded-lg flex flex-col md:flex-row transition-transform transform hover:scale-105 duration-300"
             >
               <div className="md:w-1/2 mb-4 md:mb-0 md:pr-4">
-                <h2 className="text-2xl font-bold mb-2">{interview.interviewName}</h2>
-                <h3 className="text-xl font-semibold mb-2">
+                <h2 className="md:text-2xl text-xl font-bold mb-2 hover:text-buff-400 transition-colors duration-300">
+                  {interview.interviewName}
+                </h2>
+                <h3 className="text-lg md:text-xl font-semibold mb-2">
                   Interviewer: {interview.interviewer}
                 </h3>
                 <p className="text-md mb-2">{interview.description}</p>
@@ -87,7 +86,7 @@ const Interviews = () => {
                   href={interview.videoLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-buff-500 inline-flex items-center mt-2"
+                  className="text-buff-500 inline-flex items-center mt-2 hover:text-buff-600 transition-all duration-200"
                 >
                   Watch Video <FaArrowRight className="ml-1" />
                 </a>
@@ -96,7 +95,7 @@ const Interviews = () => {
                 <img
                   src={interview.image}
                   alt={interview.interviewName}
-                  className="w-full h-72 rounded-md object-cover"
+                  className="w-full h-auto md:h-72 rounded-md object-cover transition-transform duration-300 hover:scale-105"
                 />
               </div>
             </div>
