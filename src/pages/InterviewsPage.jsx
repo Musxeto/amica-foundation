@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ReactPlayer from "react-player"; // Import ReactPlayer
+import ReactPlayer from "react-player";
 
 // Sample data array
 const interviewsData = [
@@ -11,7 +11,8 @@ const interviewsData = [
     interviewName: "Interview with Playboi Carti",
     interviewer: "John Doe",
     description: "A deep dive into the creative process of Playboi Carti.",
-    videoLink: "https://youtu.be/oK-9Lqm-8-s?list=OLAK5uy_n5ZwE3MkjjrtedzA92tQcAS44EtzgwIqI", 
+    videoLink:
+      "https://youtu.be/oK-9Lqm-8-s?list=OLAK5uy_n5ZwE3MkjjrtedzA92tQcAS44EtzgwIqI",
     image: "/placehol.png",
   },
   {
@@ -55,17 +56,21 @@ const InterviewsPage = () => {
     <>
       <Navbar />
 
-      <div className="bg-raisin-black-2 min-h-screen mt-16 text-white p-8">
+      <div className="bg-raisin-black-2 min-h-screen  mt-16 text-white p-8">
         <h1 className="text-4xl font-bold mb-4">{interview.interviewName}</h1>
         <h2 className="text-2xl mb-2">Interviewer: {interview.interviewer}</h2>
         <p className="mb-4">{interview.description}</p>
 
         {/* Video Player */}
-        <div className="player-wrapper flex items-center justify-center">
+        <div
+          className="player-wrapper"
+          style={{ position: "relative", paddingTop: "56.25%" }}
+        >
           <ReactPlayer
             url={interview.videoLink}
-            width="auto"
-            height="320px"
+            width="100%"
+            height="100%"
+            style={{ position: "absolute", top: 0, left: 0 }}
             controls={true}
           />
         </div>

@@ -32,6 +32,7 @@ const ProjectCarousel = ({ projects }) => {
         autoPlay={true} 
         autoPlaySpeed={3000}
         keyBoardControl={true}
+        arrows={false}
         showDots={true}>
         {projects.map((project) => (
           <Link key={project.id} to={`/projects/${project.id}`} className="flex flex-col md:flex-row items-center p-4 mb-5">
@@ -40,7 +41,7 @@ const ProjectCarousel = ({ projects }) => {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-48 md:h-72 object-cover rounded-lg"
+                className="w-full pl-4 h-48 md:h-72 object-cover rounded-lg"
               />
             </div>
             {/* Details Column */}

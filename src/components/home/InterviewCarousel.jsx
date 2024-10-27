@@ -33,15 +33,16 @@ const InterviewCarousel = ({ interviews }) => {
         autoPlaySpeed={3000}
         keyBoardControl={true}
         showDots={true}
+        arrows={false}
       >
         {interviews.map((interview) => (
           <Link
             key={interview.id}
             to={`/interview/${interview.id}`} // Dynamic route for the interview
-            className="flex flex-col md:flex-row items-center mb-3 p-4"
+            className="flex flex-col md:flex-row items-center mb-3 pb-4"
           >
             {/* Details Column */}
-            <div className="flex flex-col justify-center w-full md:w-1/2 pl-4 text-left">
+            <div className="flex flex-col justify-center w-full md:w-1/2 pl-4 pb-4 text-left">
               <h2 className="text-2xl font-bold text-white">{interview.interviewName}</h2>
               <p className="text-white mb-4">Interviewer: {interview.interviewer}</p>
               <p className="text-white mb-4">{interview.description}</p>

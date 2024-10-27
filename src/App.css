@@ -18,3 +18,8 @@ body {
 .flicker-shadow {
   animation: flicker 1.5s infinite; 
 }
+
+.carousel-container .react-multi-carousel-dot-list, 
+.carousel-container .react-multi-carousel-arrow {
+  z-index: 10;
+}
