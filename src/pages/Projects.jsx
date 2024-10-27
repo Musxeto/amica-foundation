@@ -2,51 +2,81 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import ProjectCard from '../components/projects/ProjectCard';
 
-const projectsData = [
+const projectsData =  [
   {
     id: 1,
     name: "AI-Powered Attendance System",
     shortDescription: "A facial recognition attendance system to streamline school attendance...",
-    longDescription: "This project involves using machine learning models for accurate attendance...",
-    images: ["1619.png", "placehol.png"],
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project involves using machine learning models for accurate attendance." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["Real-time attendance tracking", "Facial recognition technology", "User-friendly interface"] },
+      { type: "image", text: "/1619.png", alt: "AI Attendance System" },
+    ],
+    images: ["/1619.png", "/placehol.png"],
     students: ["Playboi Carti", "Taylor Swift"],
-    school: "Green Valley High School"
+    school: "Green Valley High School",
   },
   {
     id: 2,
-    name: "Smart Agriculture Monitor",
-    shortDescription: "An IoT-based project for real-time monitoring of soil health...",
-    longDescription: "The Smart Agriculture Monitor uses sensors to gather data on soil moisture...",
-    images: ["1619.png", "placehol.png"],
-    students: ["Lil Uzi Vert", "Kanye South"],
-    school: "Izne ka School"
+    name: "E-Commerce Platform",
+    shortDescription: "A dynamic e-commerce site with various features...",
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project provides a platform for users to buy and sell products." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["Product browsing", "Shopping cart", "User authentication"] },
+      { type: "image", text: "/1619.png", alt: "E-Commerce Platform" },
+    ],
+    images: ["/1619.png", "/placehol.png"],
+    students: ["John Doe", "Jane Smith"],
+    school: "Tech University",
   },
   {
     id: 3,
-    name: "Eco-Friendly Waste Management",
-    shortDescription: "A project aimed at optimizing waste collection processes...",
-    longDescription: "Utilizes machine learning to predict waste generation patterns...",
-    images: ["placehol.png"],
-    students: ["John Doe"],
-    school: "City High School"
+    name: "Music Streaming Service",
+    shortDescription: "A platform for streaming music with personalized playlists...",
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project allows users to stream music and create playlists." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["User playlists", "Song recommendations", "Search functionality"] },
+      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
+    ],
+    images: ["/1619.png", "/placehol.png"],
+    students: ["Alice Johnson", "Bob Brown"],
+    school: "Music Academy",
   },
   {
     id: 4,
-    name: "Remote Health Monitoring",
-    shortDescription: "An IoT project for monitoring patients remotely...",
-    longDescription: "The system collects health data and sends alerts to doctors...",
-    images: ["placehol.png"],
-    // Missing students field for demonstration
-    school: "Healthcare University"
+    name: "Fitness Tracker App",
+    shortDescription: "An app designed to track fitness activities...",
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project helps users track their workouts and progress." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["Activity logging", "Progress charts", "Goal setting"] },
+      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
+    ],
+    images: ["/1619.png", "/placehol.png"],
+    students: ["Chris Evans", "Scarlett Johansson"],
+    school: "Fitness Institute",
   },
   {
     id: 5,
-    name: "Virtual Reality Learning Environment",
-    shortDescription: "A VR project that enhances student learning experiences...",
-    longDescription: "Integrates VR technology to create immersive learning modules...",
-    images: ["placehol.png"],
-    students: ["Alice Johnson", "Bob Brown"],
-    school: "Tech Academy"
+    name: "Recipe Management System",
+    shortDescription: "A web application to manage and share recipes...",
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project allows users to create and share their favorite recipes." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["Recipe categorization", "User profiles", "Rating system"] },
+      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
+    ],
+    images: ["/1619.png", "/placehol.png"],
+    students: ["Emma Watson", "Daniel Radcliffe"],
+    school: "Culinary School",
   },
 ];
 

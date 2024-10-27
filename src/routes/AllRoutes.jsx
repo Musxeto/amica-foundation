@@ -7,6 +7,7 @@ import About from "../pages/About";
 import ContactUs from "../pages/ContactUs";
 import Reports from "../pages/Reports";
 import Admin from "../pages/Admin";
+import ProjectPage from "../pages/ProjectPage";
 
 const AllRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AllRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/interviews" element={<Interviews />} />
       <Route path="/projects" element={<Projects />} />
+      <Route path="/projects/:id" element={<ProjectPage />} /> 
       <Route path="/about" element={<About />} />
       <Route path="/contactus" element={<ContactUs />} />
       <Route path="/reports" element={<Reports />} />
