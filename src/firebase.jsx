@@ -1,4 +1,7 @@
 import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword , updatePassword} from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDgtBVh_H5WMME7uMzciUoIO2qS4v2rMUU",
@@ -10,3 +13,18 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app)
+
+export { auth, db, storage };
+
+export const login = async (email, password) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      return userCredential.user;
+    } catch (error) {
+      console.error('Error during login:', error);
+      throw error;
+    }
+  };
