@@ -1,11 +1,14 @@
 import React from 'react'
+import AdminNavbar from '../../components/admin/AdminNavbar'
 
 const Admin = () => {
   return (
-    <div>
-      Admin
-      Admin
-    </div>
+    <>
+      <AdminNavbar />
+      <div className='mih-h-screen bg-raisin-black-2' >
+        Admin Portal
+      </div>
+    </>
   )
 }
 
