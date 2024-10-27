@@ -6,6 +6,7 @@ import ProjectCarousel from "../components/home/ProjectCarousel";
 import InterviewCarousel from "../components/home/InterviewCarousel";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+
 const proj =  [
   {
     id: 1,

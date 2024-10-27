@@ -39,15 +39,15 @@ const ProjectCarousel = ({ projects }) => {
             {/* Image Column */}
             <div className="flex-shrink-0 w-full md:w-1/2">
               <img
-                src={project.image}
-                alt={project.title}
+                src={project.images[0]}
+                alt={project.name}
                 className="w-full pl-4 h-48 md:h-72 object-cover rounded-lg"
               />
             </div>
             {/* Details Column */}
             <div className="flex flex-col justify-center w-full md:w-1/2 pl-4 text-left">
-              <h2 className="text-2xl font-bold text-white">{project.title}</h2>
-              <p className="text-white mb-4">{project.description}</p>
+              <h2 className="text-2xl font-bold text-white">{project.name}</h2>
+              <p className="text-white mb-4">{project.shortDescription}</p>
               <span className="flex items-center mt-2 text-yellow-400 hover:text-yellow-300 transition-transform transform hover:-translate-y-1">
                 <span>Go to Project</span>
                 <FaArrowRight className="ml-1" />
