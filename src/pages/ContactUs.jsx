@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import CreatableSelect from "react-select/creatable";
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -64,7 +65,7 @@ const ContactUs = () => {
         </p>
         <form
           onSubmit={handleSubmit}
-          className="bg-raisin-black p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
+          className="bg-raisin-black p-8 rounded-lg shadow-lg shadow-buff-700 max-w-2xl mx-auto"
         >
           <div className="flex flex-col gap-6 mb-6">
             {/* Name */}
@@ -123,7 +124,7 @@ const ContactUs = () => {
                 <FaComments className="mr-2" />
                 Reason for Contact
               </label>
-              <Select
+              <CreatableSelect
                 options={reasonsOptions}
                 value={reason}
                 onChange={handleSelectChange}
@@ -168,7 +169,7 @@ const ContactUs = () => {
 
           <button
             type="submit"
-            className="w-full bg-buff-500 text-raisin-black-700 font-semibold py-2 rounded-lg hover:bg-buff-600 transition duration-300"
+            className="w-full bg-buff-500 text-raisin-black-2 font-semibold py-2 rounded-lg hover:bg-buff-600 transition duration-300"
           >
             Send Message
           </button>
