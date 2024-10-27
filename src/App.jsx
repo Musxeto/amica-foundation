@@ -8,8 +8,9 @@ import AllRoutes from "./routes/AllRoutes";
 const App = () => {
   return (
     <BrowserRouter>
+    <div className="bg-raisin-black-2">
         <ToastContainer />
-        <AllRoutes />
+        <AllRoutes /></div>
     </BrowserRouter>
   );
 };
