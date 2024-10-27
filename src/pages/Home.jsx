@@ -36,27 +36,35 @@ const proj = [
 const inter = [
   {
     id: 1,
-    title: "Interview with John Doe",
-    description:
-      "A discussion about tech innovations in the educational sector.",
-    image: "/1619.png",
-    link: "/interview-one",
+    interviewName: "Interview with Playboi Carti",
+    interviewer: "John Doe",
+    description: "A deep dive into the creative process of Playboi Carti.",
+    videoLink: "https://www.youtube.com/watch?v=example1",
+    image: "/placehol.png",
   },
   {
     id: 2,
-    title: "Interview with Jane Smith",
-    description:
-      "Insights into the startup world and how students can make an impact.",
-    image: "https://via.placeholder.com/400",
-    link: "/interview-two",
+    interviewName: "Taylor Swift: The Art of Songwriting",
+    interviewer: "Jane Smith",
+    description: "Taylor Swift shares her journey as a songwriter.",
+    videoLink: "https://www.youtube.com/watch?v=example2",
+    image: "/placehol.png",
   },
   {
     id: 3,
-    title: "Interview with Alex Johnson",
-    description:
-      "The future of software development and opportunities for students.",
-    image: "https://via.placeholder.com/400",
-    link: "/interview-three",
+    interviewName: "Behind the Scenes with Chris Evans",
+    interviewer: "Alice Johnson",
+    description: "Chris Evans discusses his experiences in Hollywood.",
+    videoLink: "https://www.youtube.com/watch?v=example3",
+    image: "/placehol.png",
+  },
+  {
+    id: 4,
+    interviewName: "Emma Watson on Activism",
+    interviewer: "Bob Brown",
+    description: "Emma Watson talks about her role in promoting gender equality.",
+    videoLink: "https://www.youtube.com/watch?v=example4",
+    image: "/placehol.png",
   },
 ];
 

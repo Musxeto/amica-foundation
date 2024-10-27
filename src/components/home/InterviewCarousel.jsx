@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom"; // Import Link
 
 const InterviewCarousel = ({ interviews }) => {
   const responsive = {
@@ -34,33 +35,29 @@ const InterviewCarousel = ({ interviews }) => {
         showDots={true}
       >
         {interviews.map((interview) => (
-          <div
+          <Link
             key={interview.id}
+            to={`/interview/${interview.id}`} // Dynamic route for the interview
             className="flex flex-col md:flex-row items-center mb-3 p-4"
           >
             {/* Details Column */}
             <div className="flex flex-col justify-center w-full md:w-1/2 pl-4 text-left">
-              <h2 className="text-2xl font-bold text-white">
-                {interview.title}
-              </h2>
+              <h2 className="text-2xl font-bold text-white">{interview.interviewName}</h2>
+              <p className="text-white mb-4">Interviewer: {interview.interviewer}</p>
               <p className="text-white mb-4">{interview.description}</p>
-              <a
-                href={interview.link}
-                className="flex items-center mt-2 text-yellow-400 hover:text-yellow-300 transition-transform transform hover:-translate-y-1"
-              >
+              <span className="flex items-center mt-2 text-yellow-400 hover:text-yellow-300 transition-transform transform hover:-translate-y-1">
                 <span>Watch Interview</span>
                 <FaArrowRight className="ml-1" />
-              </a>
+              </span>
             </div>
             {/* Image Column */}
             <div className="flex-shrink-0 w-full md:w-1/2">
               <img
                 src={interview.image}
-                alt={interview.title}
-               className="w-full h-48 md:h-72 object-cover rounded-lg"
+                className="w-full h-48 md:h-72 object-cover rounded-lg"
               />
             </div>
-          </div>
+          </Link>
         ))}
       </Carousel>
     </div>
