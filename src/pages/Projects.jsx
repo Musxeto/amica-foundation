@@ -72,9 +72,9 @@ const Projects = () => {
   return (
     <div className="bg-raisin-black-2 text-white">
       <Navbar />
-      <div className="min-h-screen mt-10 p-8">
-        <h1 className="text-3xl text-buff-500 font-bold mb-4">Projects</h1>
-        <p className="text-raisin-black-800 mb-6">Great projects by our amazing students and schools.</p>
+      <div className="min-h-screen mt-16 p-8">
+        <h1 className="text-4xl text-buff-500 font-bold text-center mb-4">Projects</h1>
+        <p className="text-raisin-black-800 text-xl text-center mb-6">Great projects by our amazing students and schools.</p>
         
         {/* Search and Sort Controls */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-8">
