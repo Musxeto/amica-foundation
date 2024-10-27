@@ -6,30 +6,86 @@ import ProjectCarousel from "../components/home/ProjectCarousel";
 import InterviewCarousel from "../components/home/InterviewCarousel";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-const proj = [
+const proj =  [
   {
     id: 1,
-    title: "Project One",
-    description:
-      "An innovative solution to enhance productivity and collaboration among students.",
-    image: "/1619.png",
-    link: "/project-one",
+    name: "AI-Powered Attendance System",
+    shortDescription: "A facial recognition attendance system to streamline school attendance...",
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project involves using machine learning models for accurate attendance." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["Real-time attendance tracking", "Facial recognition technology", "User-friendly interface"] },
+      { type: "image", text: "/1619.png", alt: "AI Attendance System" },
+    ],
+    pdf: "/react.pdf",
+    images: ["/1619.png", "/placehol.png"],
+    students: ["Playboi Carti", "Taylor Swift"],
+    school: "Green Valley High School",
   },
   {
     id: 2,
-    title: "Project Two",
-    description:
-      "A platform designed for students to share and showcase their work effectively.",
-    image: "/placehol.png",
-    link: "/project-two",
+    name: "E-Commerce Platform",
+    shortDescription: "A dynamic e-commerce site with various features...",
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project provides a platform for users to buy and sell products." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["Product browsing", "Shopping cart", "User authentication"] },
+      { type: "image", text: "/1619.png", alt: "E-Commerce Platform" },
+    ],
+    pdf: "/react.pdf",
+    images: ["/1619.png", "/placehol.png"],
+    students: ["John Doe", "Jane Smith"],
+    school: "Tech University",
   },
   {
     id: 3,
-    title: "Project Three",
-    description:
-      "An interactive tool for students to collaborate on projects and gather feedback.",
-    image: "https://via.placeholder.com/400",
-    link: "/project-three",
+    name: "Music Streaming Service",
+    shortDescription: "A platform for streaming music with personalized playlists...",
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project allows users to stream music and create playlists." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["User playlists", "Song recommendations", "Search functionality"] },
+      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
+    ],
+    pdf: "/react.pdf",
+    images: ["/1619.png", "/placehol.png"],
+    students: ["Alice Johnson", "Bob Brown"],
+    school: "Music Academy",
+  },
+  {
+    id: 4,
+    name: "Fitness Tracker App",
+    shortDescription: "An app designed to track fitness activities...",
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project helps users track their workouts and progress." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["Activity logging", "Progress charts", "Goal setting"] },
+      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
+    ],
+    pdf: "/react.pdf",
+    images: ["/1619.png", "/placehol.png"],
+    students: ["Chris Evans", "Scarlett Johansson"],
+    school: "Fitness Institute",
+  },
+  {
+    id: 5,
+    name: "Recipe Management System",
+    shortDescription: "A web application to manage and share recipes...",
+    content: [
+      { type: "heading", text: "Overview" },
+      { type: "paragraph", text: "This project allows users to create and share their favorite recipes." },
+      { type: "subheading", text: "Features" },
+      { type: "list", items: ["Recipe categorization", "User profiles", "Rating system"] },
+      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
+    ],
+    pdf: "/react.pdf",
+    images: ["/1619.png", "/placehol.png"],
+    students: ["Emma Watson", "Daniel Radcliffe"],
+    school: "Culinary School",
   },
 ];
 

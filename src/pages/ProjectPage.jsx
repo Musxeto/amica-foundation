@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Footer from "../components/Footer";
+import { Viewer, Worker } from "@react-pdf-viewer/core";
 
 const projectsData = [
   {
@@ -28,6 +29,7 @@ const projectsData = [
       },
       { type: "image", text: "/1619.png", alt: "AI Attendance System" },
     ],
+    pdf: "/react.pdf",
     images: ["/1619.png", "/placehol.png"],
     students: ["Playboi Carti", "Taylor Swift"],
     school: "Green Valley High School",
@@ -49,6 +51,7 @@ const projectsData = [
       },
       { type: "image", text: "/1619.png", alt: "E-Commerce Platform" },
     ],
+    pdf: "/react.pdf",
     images: ["/1619.png", "/placehol.png"],
     students: ["John Doe", "Jane Smith"],
     school: "Tech University",
@@ -75,6 +78,7 @@ const projectsData = [
       },
       { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
     ],
+    pdf: "/react.pdf",
     images: ["/1619.png", "/placehol.png"],
     students: ["Alice Johnson", "Bob Brown"],
     school: "Music Academy",
@@ -96,6 +100,7 @@ const projectsData = [
       },
       { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
     ],
+    pdf: "/react.pdf",
     images: ["/1619.png", "/placehol.png"],
     students: ["Chris Evans", "Scarlett Johansson"],
     school: "Fitness Institute",
@@ -117,6 +122,7 @@ const projectsData = [
       },
       { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
     ],
+    pdf: "/react.pdf",
     images: ["/1619.png", "/placehol.png"],
     students: ["Emma Watson", "Daniel Radcliffe"],
     school: "Culinary School",
@@ -165,7 +171,9 @@ const ProjectPage = () => {
               <div>
                 <h2 className="text-xl py-3 font-semibold">
                   School :{" "}
-                  <span className="text-raisin-black-700">{project.school}</span>
+                  <span className="text-raisin-black-700">
+                    {project.school}
+                  </span>
                 </h2>
               </div>
             </div>
@@ -192,13 +200,14 @@ const ProjectPage = () => {
                   key={index}
                   src={image}
                   alt={project.name}
-                   className="w-full h-72 object-cover rounded-md"
+                  className="w-full h-72 object-cover rounded-md"
                 />
               ))}
             </Carousel>
           </div>
         </div>
 
+        {/* Render the project content */}
         <div className="mt-8">
           {Array.isArray(project.content) &&
             project.content.map((block, blockIndex) => {
@@ -227,7 +236,7 @@ const ProjectPage = () => {
                       key={blockIndex}
                       src={block.text}
                       alt={block.alt}
-                      className="h-36 w-auto object-cover my-8 rounded-md "
+                      className="h-36 w-auto object-cover my-8 rounded-md"
                     />
                   );
                 case "list":
@@ -251,10 +260,28 @@ const ProjectPage = () => {
                     </blockquote>
                   );
                 default:
-                  return null; // Fallback for unknown types
+                  return null;
               }
             })}
         </div>
+
+        {/* PDF Viewer */}
+        {project.pdf && (
+           <div className="my-8 flex justify-center">
+           <div
+             className="pdf-viewer-container w-full max-w-4xl mx-auto"
+             style={{
+               border: "1px solid rgba(0, 0, 0, 0.3)",
+               padding: "10px",
+               backgroundColor: "#f8f9fa",
+               borderRadius: "8px",
+               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
+             }}
+           >
+               <Viewer fileUrl={project.pdf} />
+           </div>
+         </div>
+        )}
 
         <Footer />
       </div>

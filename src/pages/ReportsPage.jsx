@@ -56,7 +56,7 @@ const ReportsPage = () => {
           Uploaded by: {report.uploadedBy}
         </p>
 
-        <div className="mt-8 flex justify-center">
+        <div className="my-8 flex justify-center">
           <div
             className="pdf-viewer-container w-full max-w-4xl mx-auto"
             style={{
