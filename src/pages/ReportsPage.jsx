@@ -49,7 +49,7 @@ const ReportsPage = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-raisin-black-2 text-white min-h-screen p-10">
+      <div className="bg-raisin-black-2 mt-16 text-white min-h-screen p-10">
         <h1 className="text-4xl font-bold text-buff-500 text-center mb-4">
           {report.title}
         </h1>
