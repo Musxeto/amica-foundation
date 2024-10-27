@@ -9,6 +9,7 @@ import ContactUs from "../pages/ContactUs";
 import Reports from "../pages/Reports";
 import Admin from "../pages/Admin";
 import ProjectPage from "../pages/ProjectPage";
+import ReportsPage from "../pages/ReportsPage";
 
 const AllRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AllRoutes = () => {
       <Route path="/about" element={<About />} />
       <Route path="/contactus" element={<ContactUs />} />
       <Route path="/reports" element={<Reports />} />
+      <Route path="/reports/:id" element={<ReportsPage />} />
       <Route path="/admin" element={<Admin />} />
     </Routes>
   );
