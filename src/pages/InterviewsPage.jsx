@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ReactPlayer from "react-player"; // Import ReactPlayer
 
 // Sample data array
 const interviewsData = [
@@ -45,6 +46,7 @@ const InterviewsPage = () => {
   const interview = interviewsData.find(
     (interview) => interview.id === parseInt(id)
   );
+
   if (!interview) {
     return <div className="text-white text-center">Interview not found.</div>;
   }
@@ -53,22 +55,23 @@ const InterviewsPage = () => {
     <>
       <Navbar />
 
-      <div className="bg-raisin-black-2 mt-16 text-white p-8">
+      <div className="bg-raisin-black-2 min-h-screen mt-16 text-white p-8">
         <h1 className="text-4xl font-bold mb-4">{interview.interviewName}</h1>
         <h2 className="text-2xl mb-2">Interviewer: {interview.interviewer}</h2>
         <p className="mb-4">{interview.description}</p>
 
         {/* Video Player */}
-        <iframe
-          width="100%"
-          height="480"
-          src={interview.videoLink}
-          title={interview.interviewName}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        <div className="player-wrapper flex items-center justify-center">
+          <ReactPlayer
+            url={interview.videoLink}
+            width="auto"
+            height="320px"
+            controls={true}
+          />
+        </div>
       </div>
-      <Footer/>
+
+      <Footer />
     </>
   );
 };
