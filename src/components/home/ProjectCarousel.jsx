@@ -1,8 +1,8 @@
-import React from 'react';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import { FaArrowRight } from 'react-icons/fa';
-import { Link } from 'react-router-dom'; // Import Link
+import React from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom"; // Import Link
 
 const ProjectCarousel = ({ projects }) => {
   const responsive = {
@@ -26,22 +26,26 @@ const ProjectCarousel = ({ projects }) => {
 
   return (
     <div className="w-full h-auto mt-4 p-5 bg-raisin-black-2 hover:shadow-light-red-500 hover:shadow-md rounded-lg transition-all transition-4s">
-      <Carousel 
-        responsive={responsive} 
-        infinite={true} 
-        autoPlay={true} 
+      <Carousel
+        responsive={responsive}
+        infinite={true}
+        autoPlay={true}
         autoPlaySpeed={3000}
         keyBoardControl={true}
         arrows={false}
-        showDots={true}>
+        showDots={true}
+      >
         {projects.map((project) => (
-          <Link key={project.id} to={`/projects/${project.id}`} className="flex flex-col md:flex-row items-center p-4 mb-5">
+          <Link
+            key={project.id}
+            to={`/projects/${project.id}`}
+            className="flex flex-col md:flex-row items-center p-4 mb-5"
+          >
             {/* Image Column */}
             <div className="flex-shrink-0 w-full md:w-1/2">
               <img
                 src={project.images[0]}
-                alt={project.name}
-                className="w-full pl-4 h-48 md:h-72 object-cover rounded-lg"
+                className="w-full h-48 md:h-72 object-cover rounded-lg"
               />
             </div>
             {/* Details Column */}
