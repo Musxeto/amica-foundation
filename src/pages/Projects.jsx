@@ -1,120 +1,51 @@
-import React, { useState,useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import ProjectCard from '../components/projects/ProjectCard';
-import { db } from '../firebase';
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-
-const projectsData =  [
-  {
-    id: 1,
-    name: "AI-Powered Attendance System",
-    shortDescription: "A facial recognition attendance system to streamline school attendance...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project involves using machine learning models for accurate attendance." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["Real-time attendance tracking", "Facial recognition technology", "User-friendly interface"] },
-      { type: "image", text: "/1619.png", alt: "AI Attendance System" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Playboi Carti", "Taylor Swift"],
-    school: "Green Valley High School",
-  },
-  {
-    id: 2,
-    name: "E-Commerce Platform",
-    shortDescription: "A dynamic e-commerce site with various features...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project provides a platform for users to buy and sell products." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["Product browsing", "Shopping cart", "User authentication"] },
-      { type: "image", text: "/1619.png", alt: "E-Commerce Platform" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["John Doe", "Jane Smith"],
-    school: "Tech University",
-  },
-  {
-    id: 3,
-    name: "Music Streaming Service",
-    shortDescription: "A platform for streaming music with personalized playlists...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project allows users to stream music and create playlists." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["User playlists", "Song recommendations", "Search functionality"] },
-      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Alice Johnson", "Bob Brown"],
-    school: "Music Academy",
-  },
-  {
-    id: 4,
-    name: "Fitness Tracker App",
-    shortDescription: "An app designed to track fitness activities...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project helps users track their workouts and progress." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["Activity logging", "Progress charts", "Goal setting"] },
-      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Chris Evans", "Scarlett Johansson"],
-    school: "Fitness Institute",
-  },
-  {
-    id: 5,
-    name: "Recipe Management System",
-    shortDescription: "A web application to manage and share recipes...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project allows users to create and share their favorite recipes." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["Recipe categorization", "User profiles", "Rating system"] },
-      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Emma Watson", "Daniel Radcliffe"],
-    school: "Culinary School",
-  },
-];
+import React, { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import ProjectCard from "../components/projects/ProjectCard";
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { FaSpinner } from "react-icons/fa";
 
 const Projects = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortOption, setSortOption] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
 
-  // Filter projects based on search query
-  const filteredProjects = projects.filter(project =>
-    project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    project.school.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (project.students && project.students.some(student => student.toLowerCase().includes(searchQuery.toLowerCase())))
-  );
   useEffect(() => {
     const fetchProjects = async () => {
-      const projectCollection = collection(db, "projects");
-      const projectSnapshot = await getDocs(projectCollection);
-      const projectList = projectSnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setProjects(projectList);
+      try {
+        const projectCollection = collection(db, "projects");
+        const projectSnapshot = await getDocs(projectCollection);
+        const projectList = projectSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProjects(projectList);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      } finally {
+        setLoading(false); // Set loading to false after data is fetched
+      }
     };
 
     fetchProjects();
   }, []);
+
+  // Filter projects based on search query
+  const filteredProjects = projects.filter(
+    (project) =>
+      project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.school.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (project.students &&
+        project.students.some((student) =>
+          student.toLowerCase().includes(searchQuery.toLowerCase())
+        ))
+  );
+
   // Sort projects based on selected option
   const sortedProjects = [...filteredProjects].sort((a, b) => {
-    if (sortOption === 'name') return a.name.localeCompare(b.name);
-    if (sortOption === 'school') return a.school.localeCompare(b.school);
+    if (sortOption === "name") return a.name.localeCompare(b.name);
+    if (sortOption === "school") return a.school.localeCompare(b.school);
     return 0;
   });
 
@@ -122,9 +53,13 @@ const Projects = () => {
     <div className="bg-raisin-black-2 text-white">
       <Navbar />
       <div className="min-h-screen mt-16 p-8">
-        <h1 className="text-4xl text-buff-500 font-bold text-center mb-4">Projects</h1>
-        <p className="text-raisin-black-800 text-xl text-center mb-6">Great projects by our amazing students and schools.</p>
-        
+        <h1 className="text-4xl text-buff-500 font-bold text-center mb-4">
+          Projects
+        </h1>
+        <p className="text-raisin-black-800 text-xl text-center mb-6">
+          Great projects by our amazing students and schools.
+        </p>
+
         {/* Search and Sort Controls */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-8">
           <input
@@ -145,12 +80,18 @@ const Projects = () => {
           </select>
         </div>
 
-        {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortedProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
+        {/* Loading Indicator or Project Grid */}
+        {loading ? (
+          <div className="flex justify-center items-center min-h-screen">
+            <FaSpinner className="text-buff-500 text-5xl animate-spin" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sortedProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
