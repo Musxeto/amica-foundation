@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import ProjectCard from '../components/projects/ProjectCard';
+import { db } from '../firebase';
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 
 const projectsData =  [
   {
@@ -88,7 +90,7 @@ const projectsData =  [
 const Projects = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('');
-  const [projects, setProjects] = useState(projectsData);
+  const [projects, setProjects] = useState([]);
 
   // Filter projects based on search query
   const filteredProjects = projects.filter(project =>
@@ -96,7 +98,19 @@ const Projects = () => {
     project.school.toLowerCase().includes(searchQuery.toLowerCase()) ||
     (project.students && project.students.some(student => student.toLowerCase().includes(searchQuery.toLowerCase())))
   );
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const projectCollection = collection(db, "projects");
+      const projectSnapshot = await getDocs(projectCollection);
+      const projectList = projectSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProjects(projectList);
+    };
 
+    fetchProjects();
+  }, []);
   // Sort projects based on selected option
   const sortedProjects = [...filteredProjects].sort((a, b) => {
     if (sortOption === 'name') return a.name.localeCompare(b.name);

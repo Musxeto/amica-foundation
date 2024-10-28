@@ -1,12 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const EditProjectModal = () => {
-  return (
-    <div>
-      EditProjectModal
-      EditProjectModal
-    </div>
-  )
-}
+const EditProjectModal = ({ project, onClose }) => {
+  return <div className="modal"></div>;
+};
 
-export default EditProjectModal
+export default EditProjectModal;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import logo from "/logo.png";
@@ -6,89 +6,90 @@ import ProjectCarousel from "../components/home/ProjectCarousel";
 import InterviewCarousel from "../components/home/InterviewCarousel";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-
-const proj =  [
-  {
-    id: 1,
-    name: "AI-Powered Attendance System",
-    shortDescription: "A facial recognition attendance system to streamline school attendance...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project involves using machine learning models for accurate attendance." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["Real-time attendance tracking", "Facial recognition technology", "User-friendly interface"] },
-      { type: "image", text: "/1619.png", alt: "AI Attendance System" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Playboi Carti", "Taylor Swift"],
-    school: "Green Valley High School",
-  },
-  {
-    id: 2,
-    name: "E-Commerce Platform",
-    shortDescription: "A dynamic e-commerce site with various features...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project provides a platform for users to buy and sell products." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["Product browsing", "Shopping cart", "User authentication"] },
-      { type: "image", text: "/1619.png", alt: "E-Commerce Platform" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["John Doe", "Jane Smith"],
-    school: "Tech University",
-  },
-  {
-    id: 3,
-    name: "Music Streaming Service",
-    shortDescription: "A platform for streaming music with personalized playlists...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project allows users to stream music and create playlists." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["User playlists", "Song recommendations", "Search functionality"] },
-      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Alice Johnson", "Bob Brown"],
-    school: "Music Academy",
-  },
-  {
-    id: 4,
-    name: "Fitness Tracker App",
-    shortDescription: "An app designed to track fitness activities...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project helps users track their workouts and progress." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["Activity logging", "Progress charts", "Goal setting"] },
-      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Chris Evans", "Scarlett Johansson"],
-    school: "Fitness Institute",
-  },
-  {
-    id: 5,
-    name: "Recipe Management System",
-    shortDescription: "A web application to manage and share recipes...",
-    content: [
-      { type: "heading", text: "Overview" },
-      { type: "paragraph", text: "This project allows users to create and share their favorite recipes." },
-      { type: "subheading", text: "Features" },
-      { type: "list", items: ["Recipe categorization", "User profiles", "Rating system"] },
-      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Emma Watson", "Daniel Radcliffe"],
-    school: "Culinary School",
-  },
-];
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
+// const proj =  [
+//   {
+//     id: 1,
+//     name: "AI-Powered Attendance System",
+//     shortDescription: "A facial recognition attendance system to streamline school attendance...",
+//     content: [
+//       { type: "heading", text: "Overview" },
+//       { type: "paragraph", text: "This project involves using machine learning models for accurate attendance." },
+//       { type: "subheading", text: "Features" },
+//       { type: "list", items: ["Real-time attendance tracking", "Facial recognition technology", "User-friendly interface"] },
+//       { type: "image", text: "/1619.png", alt: "AI Attendance System" },
+//     ],
+//     pdf: "/react.pdf",
+//     images: ["/1619.png", "/placehol.png"],
+//     students: ["Playboi Carti", "Taylor Swift"],
+//     school: "Green Valley High School",
+//   },
+//   {
+//     id: 2,
+//     name: "E-Commerce Platform",
+//     shortDescription: "A dynamic e-commerce site with various features...",
+//     content: [
+//       { type: "heading", text: "Overview" },
+//       { type: "paragraph", text: "This project provides a platform for users to buy and sell products." },
+//       { type: "subheading", text: "Features" },
+//       { type: "list", items: ["Product browsing", "Shopping cart", "User authentication"] },
+//       { type: "image", text: "/1619.png", alt: "E-Commerce Platform" },
+//     ],
+//     pdf: "/react.pdf",
+//     images: ["/1619.png", "/placehol.png"],
+//     students: ["John Doe", "Jane Smith"],
+//     school: "Tech University",
+//   },
+//   {
+//     id: 3,
+//     name: "Music Streaming Service",
+//     shortDescription: "A platform for streaming music with personalized playlists...",
+//     content: [
+//       { type: "heading", text: "Overview" },
+//       { type: "paragraph", text: "This project allows users to stream music and create playlists." },
+//       { type: "subheading", text: "Features" },
+//       { type: "list", items: ["User playlists", "Song recommendations", "Search functionality"] },
+//       { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
+//     ],
+//     pdf: "/react.pdf",
+//     images: ["/1619.png", "/placehol.png"],
+//     students: ["Alice Johnson", "Bob Brown"],
+//     school: "Music Academy",
+//   },
+//   {
+//     id: 4,
+//     name: "Fitness Tracker App",
+//     shortDescription: "An app designed to track fitness activities...",
+//     content: [
+//       { type: "heading", text: "Overview" },
+//       { type: "paragraph", text: "This project helps users track their workouts and progress." },
+//       { type: "subheading", text: "Features" },
+//       { type: "list", items: ["Activity logging", "Progress charts", "Goal setting"] },
+//       { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
+//     ],
+//     pdf: "/react.pdf",
+//     images: ["/1619.png", "/placehol.png"],
+//     students: ["Chris Evans", "Scarlett Johansson"],
+//     school: "Fitness Institute",
+//   },
+//   {
+//     id: 5,
+//     name: "Recipe Management System",
+//     shortDescription: "A web application to manage and share recipes...",
+//     content: [
+//       { type: "heading", text: "Overview" },
+//       { type: "paragraph", text: "This project allows users to create and share their favorite recipes." },
+//       { type: "subheading", text: "Features" },
+//       { type: "list", items: ["Recipe categorization", "User profiles", "Rating system"] },
+//       { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
+//     ],
+//     pdf: "/react.pdf",
+//     images: ["/1619.png", "/placehol.png"],
+//     students: ["Emma Watson", "Daniel Radcliffe"],
+//     school: "Culinary School",
+//   },
+// ];
 
 const inter = [
   {
@@ -96,7 +97,8 @@ const inter = [
     interviewName: "Interview with Playboi Carti",
     interviewer: "John Doe",
     description: "A deep dive into the creative process of Playboi Carti.",
-    videoLink: "https://youtu.be/oK-9Lqm-8-s?list=OLAK5uy_n5ZwE3MkjjrtedzA92tQcAS44EtzgwIqI", 
+    videoLink:
+      "https://youtu.be/oK-9Lqm-8-s?list=OLAK5uy_n5ZwE3MkjjrtedzA92tQcAS44EtzgwIqI",
     image: "/placehol.png",
   },
   {
@@ -127,9 +129,25 @@ const inter = [
 ];
 
 const Home = () => {
-  const [projects, setProjects] = useState(proj);
+  const [projects, setProjects] = useState();
   const [interviews, setInterviews] = useState(inter);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const projectCollection = collection(db, "projects");
+      const projectSnapshot = await getDocs(projectCollection);
+      const projectList = projectSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setProjects(projectList);
+    };
+
+    fetchProjects();
+  }, []);
+
   return (
     <div className="bg-raisin-black-2 text-white">
       <Navbar />
@@ -148,17 +166,17 @@ const Home = () => {
         </p>
         <div className="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
           <button
-            onClick={()=>{
-              navigate("/projects")
+            onClick={() => {
+              navigate("/projects");
             }}
             className="px-4 text-center py-2 sm:px-6 sm:py-2 bg-buff text-white rounded hover:bg-yellow-green transition duration-300"
           >
             Projects
           </button>
           <button
-           onClick={()=>{
-            navigate("/contactus")
-          }}
+            onClick={() => {
+              navigate("/contactus");
+            }}
             className="px-4 py-2 sm:px-6 sm:py-2 text-center bg-light-red text-white rounded hover:bg-yellow-green transition duration-300"
           >
             Contact Us
@@ -178,7 +196,7 @@ const Home = () => {
         <p className="text-center mb-8">
           Explore innovative projects hosted by GP students.
         </p>
-        <ProjectCarousel projects={projects} />
+        {projects && <ProjectCarousel projects={projects} />}
         <div className="text-center mt-4">
           <a
             href="/projects"

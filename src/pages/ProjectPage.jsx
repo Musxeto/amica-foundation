@@ -4,145 +4,36 @@ import Navbar from "../components/Navbar";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Footer from "../components/Footer";
-import { Viewer, Worker } from "@react-pdf-viewer/core";
-
-const projectsData = [
-  {
-    id: 1,
-    name: "AI-Powered Attendance System",
-    shortDescription:
-      "A facial recognition attendance system to streamline school attendance...",
-    content: [
-      { type: "heading", text: "Overview" },
-      {
-        type: "paragraph",
-        text: "This project involves using machine learning models for accurate attendance.",
-      },
-      { type: "subheading", text: "Features" },
-      {
-        type: "list",
-        items: [
-          "Real-time attendance tracking",
-          "Facial recognition technology",
-          "User-friendly interface",
-        ],
-      },
-      { type: "image", text: "/1619.png", alt: "AI Attendance System" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Playboi Carti", "Taylor Swift"],
-    school: "Green Valley High School",
-  },
-  {
-    id: 2,
-    name: "E-Commerce Platform",
-    shortDescription: "A dynamic e-commerce site with various features...",
-    content: [
-      { type: "heading", text: "Overview" },
-      {
-        type: "paragraph",
-        text: "This project provides a platform for users to buy and sell products.",
-      },
-      { type: "subheading", text: "Features" },
-      {
-        type: "list",
-        items: ["Product browsing", "Shopping cart", "User authentication"],
-      },
-      { type: "image", text: "/1619.png", alt: "E-Commerce Platform" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["John Doe", "Jane Smith"],
-    school: "Tech University",
-  },
-  {
-    id: 3,
-    name: "Music Streaming Service",
-    shortDescription:
-      "A platform for streaming music with personalized playlists...",
-    content: [
-      { type: "heading", text: "Overview" },
-      {
-        type: "paragraph",
-        text: "This project allows users to stream music and create playlists.",
-      },
-      { type: "subheading", text: "Features" },
-      {
-        type: "list",
-        items: [
-          "User playlists",
-          "Song recommendations",
-          "Search functionality",
-        ],
-      },
-      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Alice Johnson", "Bob Brown"],
-    school: "Music Academy",
-  },
-  {
-    id: 4,
-    name: "Fitness Tracker App",
-    shortDescription: "An app designed to track fitness activities...",
-    content: [
-      { type: "heading", text: "Overview" },
-      {
-        type: "paragraph",
-        text: "This project helps users track their workouts and progress.",
-      },
-      { type: "subheading", text: "Features" },
-      {
-        type: "list",
-        items: ["Activity logging", "Progress charts", "Goal setting"],
-      },
-      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Chris Evans", "Scarlett Johansson"],
-    school: "Fitness Institute",
-  },
-  {
-    id: 5,
-    name: "Recipe Management System",
-    shortDescription: "A web application to manage and share recipes...",
-    content: [
-      { type: "heading", text: "Overview" },
-      {
-        type: "paragraph",
-        text: "This project allows users to create and share their favorite recipes.",
-      },
-      { type: "subheading", text: "Features" },
-      {
-        type: "list",
-        items: ["Recipe categorization", "User profiles", "Rating system"],
-      },
-      { type: "image", text: "/m1619.png", alt: "Music Streaming Service" },
-    ],
-    pdf: "/react.pdf",
-    images: ["/1619.png", "/placehol.png"],
-    students: ["Emma Watson", "Daniel Radcliffe"],
-    school: "Culinary School",
-  },
-];
+import { Viewer } from "@react-pdf-viewer/core";
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const ProjectPage = () => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
 
   useEffect(() => {
-    const foundProject = projectsData.find((proj) => proj.id === parseInt(id));
-    setProject(foundProject);
-  }, [id]);
+    const fetchProjects = async () => {
+      const projectCollection = collection(db, "projects");
+      const projectSnapshot = await getDocs(projectCollection);
+      const projectList = projectSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      // Find the project with the matching ID
+      const foundProject = projectList.find((project) => project.id === id);
+      setProject(foundProject || null); // Set project to found project or null if not found
+    };
+
+    fetchProjects();
+  }, [id]); // Add id as a dependency to refetch if it changes
 
   if (!project) {
     return (
       <>
         <Navbar />
-        <p>Project not found</p>
+        <p className="text-center">Project not found</p>
       </>
     );
   }
@@ -267,20 +158,20 @@ const ProjectPage = () => {
 
         {/* PDF Viewer */}
         {project.pdf && (
-           <div className="my-8 flex justify-center">
-           <div
-             className="pdf-viewer-container w-full max-w-4xl mx-auto"
-             style={{
-               border: "1px solid rgba(0, 0, 0, 0.3)",
-               padding: "10px",
-               backgroundColor: "#f8f9fa",
-               borderRadius: "8px",
-               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
-             }}
-           >
-               <Viewer fileUrl={project.pdf} />
-           </div>
-         </div>
+          <div className="my-8 flex justify-center">
+            <div
+              className="pdf-viewer-container w-full max-w-4xl mx-auto"
+              style={{
+                border: "1px solid rgba(0, 0, 0, 0.3)",
+                padding: "10px",
+                backgroundColor: "#f8f9fa",
+                borderRadius: "8px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              }}
+            >
+              <Viewer fileUrl={project.pdf} />
+            </div>
+          </div>
         )}
 
         <Footer />
