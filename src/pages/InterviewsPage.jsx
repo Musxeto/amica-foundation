@@ -1,81 +1,78 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ReactPlayer from "react-player";
-
-// Sample data array
-const interviewsData = [
-  {
-    id: 1,
-    interviewName: "Interview with Playboi Carti",
-    interviewer: "John Doe",
-    description: "A deep dive into the creative process of Playboi Carti.",
-    videoLink:
-      "https://youtu.be/oK-9Lqm-8-s?list=OLAK5uy_n5ZwE3MkjjrtedzA92tQcAS44EtzgwIqI",
-    image: "/placehol.png",
-  },
-  {
-    id: 2,
-    interviewName: "Taylor Swift: The Art of Songwriting",
-    interviewer: "Jane Smith",
-    description: "Taylor Swift shares her journey as a songwriter.",
-    videoLink: "https://www.youtube.com/watch?v=FSzCnVBZQS0",
-    image: "/placehol.png",
-  },
-  {
-    id: 3,
-    interviewName: "Behind the Scenes with Chris Evans",
-    interviewer: "Alice Johnson",
-    description: "Chris Evans discusses his experiences in Hollywood.",
-    videoLink: "https://youtu.be/FlvQrMidE3w",
-    image: "/placehol.png",
-  },
-  {
-    id: 4,
-    interviewName: "Emma Watson on Activism",
-    interviewer: "Bob Brown",
-    description:
-      "Emma Watson talks about her role in promoting gender equality.",
-    videoLink: "https://www.youtube.com/watch?v=NEFEwfPcXRA",
-    image: "/placehol.png",
-  },
-];
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { FaSpinner } from "react-icons/fa";
 
 const InterviewsPage = () => {
   const { id } = useParams();
-  const interview = interviewsData.find(
-    (interview) => interview.id === parseInt(id)
-  );
+  const [interview, setInterview] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!interview) {
-    return <div className="text-white text-center">Interview not found.</div>;
-  }
+  useEffect(() => {
+    const fetchInterviews = async () => {
+      try {
+        const interviewCollection = collection(db, "interviews");
+        const interviewSnapshot = await getDocs(interviewCollection);
+        const interviewList = interviewSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        const foundInterview = interviewList.find(
+          (interview) => interview.id === id
+        );
+        
+        if (foundInterview) {
+          setInterview(foundInterview);
+        } else {
+          setError("Interview not found.");
+        }
+      } catch (err) {
+        setError("Failed to fetch interview data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInterviews();
+  }, [id]);
 
   return (
     <>
       <Navbar />
+      <div className="bg-raisin-black-2 min-h-screen mt-16 text-white p-8">
+        {loading ? (
+          <div className="flex justify-center items-center min-h-screen">
+            <FaSpinner className="text-buff-500 text-5xl animate-spin" />
+          </div>
+        ) : error ? (
+          <div className="text-white text-center">{error}</div>
+        ) : (
+          interview && (
+            <>
+              <h1 className="text-4xl font-bold mb-4">{interview.interviewName}</h1>
+              <h2 className="text-2xl mb-2">Interviewer: {interview.interviewer}</h2>
+              <p className="mb-4">{interview.description}</p>
 
-      <div className="bg-raisin-black-2 min-h-screen  mt-16 text-white p-8">
-        <h1 className="text-4xl font-bold mb-4">{interview.interviewName}</h1>
-        <h2 className="text-2xl mb-2">Interviewer: {interview.interviewer}</h2>
-        <p className="mb-4">{interview.description}</p>
-
-        {/* Video Player */}
-        <div
-          className="player-wrapper"
-          style={{ position: "relative", paddingTop: "56.25%" }}
-        >
-          <ReactPlayer
-            url={interview.videoLink}
-            width="100%"
-            height="100%"
-            style={{ position: "absolute", top: 0, left: 0 }}
-            controls={true}
-          />
-        </div>
+              {/* Video Player */}
+              <div className="player-wrapper" style={{ position: "relative", paddingTop: "56.25%" }}>
+                <ReactPlayer
+                  url={interview.videoLink}
+                  width="100%"
+                  height="100%"
+                  style={{ position: "absolute", top: 0, left: 0 }}
+                  controls={true}
+                />
+              </div>
+            </>
+          )
+        )}
       </div>
-
       <Footer />
     </>
   );

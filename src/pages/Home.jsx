@@ -15,6 +15,7 @@ const Home = () => {
   const [interviews, setInterviews] = useState([]);
   const [loadingProjects, setLoadingProjects] = useState(true);
   const [loadingInterviews, setLoadingInterviews] = useState(true);
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,7 +44,7 @@ const Home = () => {
     };
 
     fetchProjects();
-    // fetchInterviews();
+    fetchInterviews();
   }, []);
 
   return (
