@@ -1,104 +1,62 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
-import Interviews from "../pages/Interviews";
-import InterviewsPage from "../pages/InterviewsPage";
-import Projects from "../pages/Projects";
-import About from "../pages/About";
-import ContactUs from "../pages/ContactUs";
-import Reports from "../pages/Reports";
-import Admin from "../pages/admin/Admin";
-import ProjectPage from "../pages/ProjectPage";
-import ReportsPage from "../pages/ReportsPage";
-import Login from "../pages/Login";
-import PrivateRoute from "./PrivateRoute";
-import ManageProjects from "../pages/admin/ManageProjects";
-import ManageInterviews from "../pages/admin/ManageInterviews";
-import ManageReports from "../pages/admin/ManageReports";
-import Settings from "../pages/admin/Settings";
-import AddNewProject from "../pages/admin/AddNewProject";
-import AddNewInterview from "../pages/admin/AddNewInterview";
-import AddNewReport from "../pages/admin/AddNewReport";
-const AllRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/interviews" element={<Interviews />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/projects/:id" element={<ProjectPage />} />
-      <Route path="/interview/:id" element={<InterviewsPage />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contactus" element={<ContactUs />} />
-      <Route path="/reports" element={<Reports />} />
-      <Route path="/reports/:id" element={<ReportsPage />} />
-      <Route path="/login" element={<Login />} />
-      <Route
-        path="/admin"
-        element={
-          <PrivateRoute>
-            <Admin />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/admin/projects"
-        element={
-          <PrivateRoute>
-            <ManageProjects />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/admin/interviews"
-        element={
-          <PrivateRoute>
-            <ManageInterviews />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/admin/reports"
-        element={
-          <PrivateRoute>
-            <ManageReports />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/admin/settings"
-        element={
-          <PrivateRoute>
-            <Settings />
-          </PrivateRoute>
-        }
-      />
+import React, { useState, useEffect } from "react";
+import AdminNavbar from "../components/admin/AdminNavbar";
 
-      <Route
-        path="/admin/projects/new"
-        element={
-          <PrivateRoute>
-            <AddNewProject />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/admin/interviews/new"
-        element={
-          <PrivateRoute>
-            <AddNewInterview />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/admin/reports/new"
-        element={
-          <PrivateRoute>
-            <AddNewReport />
-          </PrivateRoute>
-        }
-      />
-    </Routes>
+const Admin = () => {
+  const [greeting, setGreeting] = useState("");
+  const [quote, setQuote] = useState("");
+
+  const quotes = [
+    "Believe you can, and you're halfway there.",
+    "Success is not final; failure is not fatal: It is the courage to continue that counts.",
+    "Don't watch the clock; do what it does. Keep going.",
+    "The only limit to our realization of tomorrow is our doubts of today.",
+    "Dream big, work hard, stay focused, and surround yourself with good people.",
+  ];
+
+  // Set greeting based on current time
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) setGreeting("Good morning");
+    else if (hour < 18) setGreeting("Good afternoon");
+    else if (hour < 21) setGreeting("Good evening");
+    else setGreeting("Good night");
+
+    // Random motivational quote
+    setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+  }, []);
+
+  return (
+    <>
+      <AdminNavbar />
+      <div className="min-h-screen mt-16 bg-raisin-black-2 p-6 text-buff-600">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-semibold">{greeting}, Admin!</h1>
+          <p className="mt-2 text-lg italic">{quote}</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+          <button className="bg-yellow-green-500 hover:bg-yellow-green-400 text-raisin-black-100 font-bold py-2 px-4 rounded">
+            Manage Reports
+          </button>
+          <button className="bg-yellow-green-500 hover:bg-yellow-green-400 text-raisin-black-100 font-bold py-2 px-4 rounded">
+            Add New Report
+          </button>
+          <button className="bg-yellow-green-500 hover:bg-yellow-green-400 text-raisin-black-100 font-bold py-2 px-4 rounded">
+            Manage Interviews
+          </button>
+          <button className="bg-yellow-green-500 hover:bg-yellow-green-400 text-raisin-black-100 font-bold py-2 px-4 rounded">
+            Add New Interview
+          </button>
+          <button className="bg-yellow-green-500 hover:bg-yellow-green-400 text-raisin-black-100 font-bold py-2 px-4 rounded">
+            Manage Projects
+          </button>
+          <button className="bg-yellow-green-500 hover:bg-yellow-green-400 text-raisin-black-100 font-bold py-2 px-4 rounded">
+            Add New Project
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 
-export default AllRoutes;
+export default Admin;
