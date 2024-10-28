@@ -1,0 +1,24 @@
+# Public routes
+/               /index.html  200
+/interviews     /index.html  200
+/projects       /index.html  200
+/projects/*     /index.html  200
+/interview/*    /index.html  200
+/about          /index.html  200
+/contactus      /index.html  200
+/reports        /index.html  200
+/reports/*      /index.html  200
+/login          /index.html  200
+
+# Protected routes for admin
+/admin                  /index.html  200
+/admin/projects         /index.html  200
+/admin/interviews       /index.html  200
+/admin/reports          /index.html  200
+/admin/settings         /index.html  200
+/admin/projects/new     /index.html  200
+/admin/interviews/new   /index.html  200
+/admin/reports/new      /index.html  200
+
+# Catch-all for 404s
+/* /index.html  404

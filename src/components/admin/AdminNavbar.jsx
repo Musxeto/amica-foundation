@@ -1,9 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import { toast } from 'react-toastify';
-
+import { Link } from 'react-router-dom';
 const AdminNavbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+      setIsOpen(!isOpen);
+    };
+  
     const {user, logout} = useAuth();
+    
+
     const handleLogout = async () => {
         try {
           await signOut(auth);
@@ -17,7 +25,7 @@ const AdminNavbar = () => {
     <nav className="fixed z-50 top-0 left-0 w-full bg-raisin-black shadow-light-red-500 shadow-lg text-white px-4 py-3 md:flex md:items-center md:justify-between flicker-shadow">
     <div className="flex items-center justify-between">
       <Link to="/">
-        <img src={logo} alt="Logo" className="h-10" />
+        <img src={"/logo.png"} alt="Logo" className="h-10" />
       </Link>
       <button
         onClick={toggleMenu}

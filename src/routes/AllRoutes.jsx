@@ -11,7 +11,14 @@ import Admin from "../pages/admin/Admin";
 import ProjectPage from "../pages/ProjectPage";
 import ReportsPage from "../pages/ReportsPage";
 import Login from "../pages/Login";
-import PrivateRoute from "./PrivateRoute"
+import PrivateRoute from "./PrivateRoute";
+import ManageProjects from "../pages/admin/ManageProjects";
+import ManageInterviews from "../pages/admin/ManageInterviews";
+import ManageReports from "../pages/admin/ManageReports";
+import Settings from "../pages/admin/Settings";
+import AddNewProject from "../pages/admin/AddNewProject";
+import AddNewInterview from "../pages/admin/AddNewInterview";
+import AddNewReport from "../pages/admin/AddNewReport";
 const AllRoutes = () => {
   return (
     <Routes>
@@ -33,7 +40,63 @@ const AllRoutes = () => {
           </PrivateRoute>
         }
       />
-      
+      <Route
+        path="/admin/projects"
+        element={
+          <PrivateRoute>
+            <ManageProjects />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/interviews"
+        element={
+          <PrivateRoute>
+            <ManageInterviews />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/reports"
+        element={
+          <PrivateRoute>
+            <ManageReports />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/settings"
+        element={
+          <PrivateRoute>
+            <Settings />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/projects/new"
+        element={
+          <PrivateRoute>
+            <AddNewProject />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/interviews/new"
+        element={
+          <PrivateRoute>
+            <AddNewInterview />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/reports/new"
+        element={
+          <PrivateRoute>
+            <AddNewReport />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };
