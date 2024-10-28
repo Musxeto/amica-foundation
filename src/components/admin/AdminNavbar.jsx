@@ -23,7 +23,7 @@ const AdminNavbar = () => {
   return (
     <nav className="fixed z-50 top-0 left-0 w-full bg-raisin-black shadow-light-red-500 shadow-lg text-white px-4 py-3 md:flex md:items-center md:justify-between flicker-shadow">
       <div className="flex items-center justify-between">
-        <Link to="/">
+        <Link to="/admin">
           <img src={"/logo.png"} alt="Logo" className="h-10" />
         </Link>
         <button
@@ -83,11 +83,11 @@ const AdminNavbar = () => {
         </button>
         <div className="flex flex-col space-y-6 p-8 mt-10">
           <Link
-            to="/"
+            to="/admin"
             onClick={toggleMenu}
             className="text-white hover:text-buff"
           >
-            Home
+          DashBoard
           </Link>
           <Link
             to="/admin/projects"
@@ -118,21 +118,21 @@ const AdminNavbar = () => {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex md:items-center space-x-6 ml-4">
-        <Link to="/" className="text-white hover:text-buff">
-          Home
+        <Link to="/admin" className="text-white hover:text-buff">
+          Dashboard
         </Link>
-        <Link to="/projects" className="text-white hover:text-buff">
-          Projects
+        <Link to="/admin/projects" className="text-white hover:text-buff">
+          Manage Projects
         </Link>
-        <Link to="/interviews" className="text-white hover:text-buff">
-          Interviews
+        <Link to="/admin/interviews" className="text-white hover:text-buff">
+          Manage Interviews
         </Link>
         <Link
-          to="/reports"
+          to="/admin/reports"
           onClick={toggleMenu}
           className="text-white hover:text-buff"
         >
-          Reports
+          Manage Reports
         </Link>
       </div>
 

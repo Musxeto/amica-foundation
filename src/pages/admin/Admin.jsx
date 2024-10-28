@@ -5,9 +5,8 @@ const Admin = () => {
   return (
     <>
       <AdminNavbar />
-      <div className='mih-h-screen bg-raisin-black-2' >
-        Admin Portal
-      </div>
+      <div className='mih-h-screen mt-16 bg-raisin-black-2' >
+        Admin Portal   </div>
     </>
   )
 }
