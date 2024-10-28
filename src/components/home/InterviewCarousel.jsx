@@ -43,9 +43,17 @@ const InterviewCarousel = ({ interviews }) => {
           >
             {/* Details Column */}
             <div className="flex flex-col justify-center w-full md:w-1/2 pl-4 pb-4 text-left">
-              <h2 className="text-2xl font-bold text-white">{interview.interviewName}</h2>
-              <p className="text-white mb-4">Interviewer: {interview.interviewer}</p>
-              <p className="text-white mb-4">{interview.description}</p>
+              <h2 className="text-2xl font-bold text-white">
+                {interview.interviewName}
+              </h2>
+              <p className="text-white mb-4">
+                Interviewer: {interview.interviewer}
+              </p>
+              <p className="text-white mb-4">
+                {interview.description.length > 70
+                  ? `${interview.description.slice(0, 80)}...`
+                  : interview.description}
+              </p>
               <span className="flex items-center mt-2 text-yellow-400 hover:text-yellow-300 transition-transform transform hover:-translate-y-1">
                 <span>Watch Interview</span>
                 <FaArrowRight className="ml-1" />
