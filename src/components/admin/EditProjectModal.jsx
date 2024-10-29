@@ -31,6 +31,7 @@ const EditProjectModal = ({ project, onClose, onUpdate }) => {
   const handleFileUpload = async (file, setStateCallback) => {
     if (!file) return;
     try {
+      setLoading(true)
       const storageRef = ref(
         storage,
         `${file.type === "application/pdf" ? "pdfs" : "images"}/${file.name}`
@@ -38,7 +39,8 @@ const EditProjectModal = ({ project, onClose, onUpdate }) => {
       await uploadBytes(storageRef, file);
       const url = await getDownloadURL(storageRef);
       console.log(`Uploaded file: ${url}`); // Debug log
-      setStateCallback(url);
+      setStateCallback(url); // Update state with the new URL
+      setLoading(false)
     } catch (error) {
       console.error("Error uploading file:", error);
       toast.error("Error uploading file.");
@@ -69,7 +71,7 @@ const EditProjectModal = ({ project, onClose, onUpdate }) => {
         school,
         students,
         content,
-        pdf,
+        pdf, // This should hold the new PDF URL if it's uploaded correctly
         images,
       };
 
@@ -198,7 +200,7 @@ const EditProjectModal = ({ project, onClose, onUpdate }) => {
           <input
             type="file"
             accept="application/pdf"
-            onChange={(e) => handleFileUpload(e.target.files[0], setPdf)}
+            onChange={(e) => handleFileUpload(e.target.files[0], setPdf)} // This should work
             className="w-full p-2 bg-raisin-black-400 border rounded"
           />
         </div>
