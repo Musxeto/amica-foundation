@@ -6,10 +6,17 @@ import {
   FaUser,
   FaRegEdit,
   FaComments,
+  FaSpinner,
 } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CreatableSelect from "react-select/creatable";
+import { db } from "../firebase"; // Ensure this points to your Firebase configuration
+import { collection, addDoc } from "firebase/firestore";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FiLoader } from "react-icons/fi";
+
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -20,6 +27,7 @@ const ContactUs = () => {
   });
 
   const [reason, setReason] = useState(null);
+  const [loading, setLoading] = useState(false); // Loading state
 
   const reasonsOptions = [
     { value: "support", label: "Support" },
@@ -37,23 +45,39 @@ const ContactUs = () => {
     setReason(selectedOption);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can handle the form submission, e.g., send data to an API
-    console.log("Form Data: ", { ...formData, reason: reason?.value });
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      school: "",
-      subject: "",
-      message: "",
-    });
-    setReason(null);
+    setLoading(true); // Set loading to true
+
+    // Prepare the data to be stored
+    const contactData = { ...formData, reason: reason?.value };
+
+    try {
+      // Add the contact data to Firestore
+      await addDoc(collection(db, "messages"), contactData);
+      toast.success("Form Data stored successfully!"); // Success toast
+      console.log("Form Data stored successfully: ", contactData);
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        school: "",
+        subject: "",
+        message: "",
+      });
+      setReason(null);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast.error("Error adding document, please try again."); // Error toast
+    } finally {
+      setLoading(false); // Set loading to false
+    }
   };
 
   return (
     <>
+      <ToastContainer /> {/* Toast container */}
       <Navbar />
       <div className="bg-raisin-black-2 min-h-screen mt-16 text-white py-10 px-4 md:px-20 lg:px-40">
         <h2 className="text-3xl font-bold text-buff-500 text-center mb-6">
@@ -169,9 +193,17 @@ const ContactUs = () => {
 
           <button
             type="submit"
-            className="w-full bg-buff-500 text-raisin-black-2 font-semibold py-2 rounded-lg hover:bg-buff-600 transition duration-300"
+            className={`w-full bg-buff-500 text-raisin-black-2 font-semibold py-2 rounded-lg hover:bg-buff-600 transition duration-300 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading} 
           >
-            Send Message
+            {loading ? (
+              <FiLoader className="animate-spin mx-auto" />
+            ) : (
+              "Send Message"
+            )}{" "}
+            {/* Change button text */}
           </button>
         </form>
       </div>

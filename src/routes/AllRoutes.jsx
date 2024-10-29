@@ -19,6 +19,7 @@ import Settings from "../pages/admin/Settings";
 import AddNewProject from "../pages/admin/AddNewProject";
 import AddNewInterview from "../pages/admin/AddNewInterview";
 import AddNewReport from "../pages/admin/AddNewReport";
+import Messages from "../pages/admin/Messages";
 const AllRoutes = () => {
   return (
     <Routes>
@@ -94,6 +95,15 @@ const AllRoutes = () => {
         element={
           <PrivateRoute>
             <AddNewReport />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/messages"
+        element={
+          <PrivateRoute>
+            <Messages />
           </PrivateRoute>
         }
       />

@@ -74,6 +74,12 @@ const Admin = () => {
           >
             Add New Project
           </button>
+          <button
+            onClick={() => navigate("/admin/messages")}
+            className="bg-yellow-green-500 transition-all ease-in-out duration-100 hover:bg-buff text-raisin-black-100 font-bold py-2 px-4 rounded w-full"
+          >
+           Messages
+          </button>
         </div>
       </div>
     </>

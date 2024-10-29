@@ -19,6 +19,7 @@
 /admin/projects/new     /index.html  200
 /admin/interviews/new   /index.html  200
 /admin/reports/new      /index.html  200
+/admin/messages         /index.html  200
 
 # Catch-all for 404s
 /* /index.html  404
