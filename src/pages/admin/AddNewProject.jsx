@@ -272,7 +272,7 @@ const AddNewProject = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block mb-1">External Images</label>
+            <label className="block mb-1">Slider Images</label>
             {externalImages.map((_, index) => (
               <div key={index} className="flex items-center mb-2">
                 <input
