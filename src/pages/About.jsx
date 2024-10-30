@@ -11,41 +11,42 @@ const About = () => {
           About Us
         </h2>
         <p className="text-center text-gray-300 mb-8">
-          Welcome to the Amica Foundation! We are dedicated to raising awareness about underrepresented issues in Pakistan.
+          Welcome to the Amica Foundation, where progress meets purpose. Our mission is to create a better environment in Pakistan through advocacy and initiatives across healthcare, animal welfare, environmental conservation, and human rights.
         </p>
 
         <h3 className="text-2xl font-semibold text-buff-500 mb-4">
-          Our Purpose
+          Our Mission
         </h3>
         <p className="text-gray-300 mb-4">
-          Our main contributors are GP students who share unique projects and valuable insights. The website highlights important topics often overlooked in mainstream media, such as the Baloch insurgency and single parenting.
+          We are committed to addressing critical issues that impact our communities and our planet. By bringing together dedicated individuals and sharing insights and projects, we aim to spotlight topics that are essential for a sustainable and equitable Pakistan.
         </p>
 
         <h3 className="text-2xl font-semibold text-buff-500 mb-4">
-          Key Features
+          Our Focus Areas
         </h3>
         <ul className="list-disc list-inside text-gray-300 mb-4">
-          <li>Explore research articles on critical issues.</li>
-          <li>View informative slides and posters created by students.</li>
-          <li>Access content that fosters dialogue and raises awareness.</li>
+          <li>Healthcare: Enhancing accessibility and promoting public health initiatives.</li>
+          <li>Animal Welfare: Advocating for the humane treatment and well-being of animals.</li>
+          <li>Environmental Conservation: Raising awareness and working towards a greener, cleaner Pakistan.</li>
+          <li>Human Rights: Standing up for justice, equity, and the protection of fundamental rights.</li>
         </ul>
 
         <h3 className="text-2xl font-semibold text-buff-500 mb-4">
-          Contribute Your Work
+          Get Involved
         </h3>
         <p className="text-gray-300 mb-4">
-          If you want to publish research reports or feature your projects, we encourage you to reach out! Your contributions can help us shed light on important topics and inspire others.
+          If you’re passionate about creating positive change, we invite you to share your projects, insights, or research. Together, we can inspire others and amplify voices that often go unheard.
         </p>
 
         <h3 className="text-2xl font-semibold text-buff-500 mb-4">
           Contact Us
         </h3>
         <p className="text-gray-300 mb-4">
-          We’d love to hear from you! If you have any questions, suggestions, or would like to collaborate, please contact us through our <a href="/contact" className="text-buff-500 underline">Contact Us</a> page.
+          We’d love to connect with you! For questions, collaborations, or suggestions, please reach out through our <a href="/contact" className="text-buff-500 underline">Contact Us</a> page.
         </p>
 
         <p className="text-center text-gray-300">
-          Together, we can make a difference and bring attention to important issues in our society!
+          Join us in making a lasting impact and building a brighter future for Pakistan!
         </p>
       </div>
       <Footer />

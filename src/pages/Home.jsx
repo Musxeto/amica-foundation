@@ -15,7 +15,7 @@ const Home = () => {
   const [interviews, setInterviews] = useState([]);
   const [loadingProjects, setLoadingProjects] = useState(true);
   const [loadingInterviews, setLoadingInterviews] = useState(true);
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,8 +60,9 @@ const Home = () => {
           Amica Foundation
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-center max-w-md mb-6 px-4">
-          A platform for GP students to showcase and host their projects,
-          fostering collaboration and innovation.
+          Providing a platform for progress towards improving the Pakistani
+          environment. Working in healthcare, animal welfare, envronment, and
+          human rights.
         </p>
         <div className="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-2 sm:space-y-0">
           <button
@@ -92,9 +93,6 @@ const Home = () => {
         <h2 className="text-2xl font-bold text-center mb-4">
           Featured Projects
         </h2>
-        <p className="text-center mb-8">
-          Explore innovative projects hosted by GP students.
-        </p>
         {loadingProjects ? (
           <div className="text-center justify-center flex text-white">
             <FaSpinner className="animate-spin" />
@@ -120,8 +118,8 @@ const Home = () => {
       >
         <h2 className="text-2xl font-bold text-center mt-8 mb-4">Interviews</h2>
         <p className="text-center mb-8">
-          Gain insights from industry leaders, innovators, and bright GP
-          Students.
+          Insights from our leaders and innovators. Conducted by us, catered to
+          you.
         </p>
         {loadingInterviews ? (
           <div className="text-center justify-center flex text-white">
@@ -147,13 +145,11 @@ const Home = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="min-h-screen justify-center flex flex-col items-center">
-          <h2 className="text-2xl font-bold text-center mb-4">
-            Looking for GP Students?
-          </h2>
+          <h2 className="text-2xl font-bold text-center mb-4">Work with us</h2>
           <p className="text-center mb-6">
-            If you're interested in getting your project featured or
-            collaborating with GP students, feel free to reach out to us!
+            Looking to get your work published, supported, or collaborated?
           </p>
+          <p className="text-center mb-6">Send us a message</p>
           <a
             href="/contactus"
             className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-400 transition duration-300"
